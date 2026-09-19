@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CookieLens &mdash; Options</title>
+  <link rel="stylesheet" href="../popup/popup.css" />
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <img src="../../icons/32.png" alt="" class="brand-icon" width="20" height="20" />
+      <h1 class="title" data-i18n="extName">CookieLens</h1>
+      <span class="version" id="version">&hellip;</span>
+    </div>
+  </header>
+
+  <main class="options-page">
+    <section class="options-section" aria-labelledby="sec-general">
+      <h2 id="sec-general" data-i18n="optionsGeneral">General</h2>
+      <div class="options-row">
+        <label for="opt-opentarget" data-i18n="optionsOpenTarget">Open via</label>
+        <select id="opt-opentarget">
+          <option value="panel" data-i18n="optionsOpenTargetPanel">Side panel</option>
+          <option value="popup" data-i18n="optionsOpenTargetPopup">Popup</option>
+        </select>
+      </div>
+      <div class="options-row">
+        <label for="opt-theme" data-i18n="optionsTheme">Theme</label>
+        <select id="opt-theme">
+          <option value="auto" data-i18n="optionsThemeAuto">Auto</option>
+          <option value="light" data-i18n="optionsThemeLight">Light</option>
+          <option value="dark" data-i18n="optionsThemeDark">Dark</option>
+        </select>
+      </div>
+      <div class="options-row options-check">
+        <label><input type="checkbox" id="opt-advanced" /> <span data-i18n="optionsAdvancedDefault">Advanced mode by default</span></label>
+      </div>
+      <div class="options-row options-check">
+        <label><input type="checkbox" id="opt-animations" /> <span data-i18n="optionsAnimations">Animations</span></label>
+      </div>
+      <div class="options-row">
+        <label for="opt-barpos" data-i18n="optionsBarPosition">Button bar position</label>
+        <select id="opt-barpos">
+          <option value="bottom" data-i18n="optionsBarBottom">Bottom</option>
+          <option value="top" data-i18n="optionsBarTop">Top</option>
+        </select>
+      </div>
+      <div class="options-row">
+        <label for="opt-extrainfo" data-i18n="optionsExtraInfo">Extra info column</label>
+        <select id="opt-extrainfo">
+          <option value="value" data-i18n="optionsExtraValue">Value</option>
+          <option value="domain" data-i18n="optionsExtraDomain">Domain</option>
+          <option value="path" data-i18n="optionsExtraPath">Path</option>
+          <option value="expiry" data-i18n="optionsExtraExpiry">Expiration</option>
+          <option value="sameSite" data-i18n="optionsExtraSameSite">SameSite</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="options-section" aria-labelledby="sec-export">
+      <h2 id="sec-export" data-i18n="optionsExport">Export</h2>
+      <div class="options-row">
+        <label for="opt-exportformat" data-i18n="optionsExportFormat">Default export format</label>
+        <select id="opt-exportformat">
+          <option value="json" data-i18n="exportFormatJson">JSON</option>
+          <option value="netscape" data-i18n="exportFormatNetscape">Netscape</option>
+          <option value="headerstring" data-i18n="exportFormatHeaderString">Header String</option>
+          <option value="curl-bash" data-i18n="exportFormatCurlBash">cURL (bash)</option>
+          <option value="curl-cmd" data-i18n="exportFormatCurlCmd">cURL (CMD)</option>
+          <option value="ask" data-i18n="optionsExportAsk">Ask every time</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="options-section danger-zone" aria-labelledby="sec-data">
+      <h2 id="sec-data" data-i18n="optionsDataTitle">Data (danger zone)</h2>
+      <p class="panel-hint" data-i18n="optionsDataHint">
+        These actions cover every cookie in every cookie store of this browser profile &mdash;
+        not only the site shown in the popup.
+      </p>
+      <div class="options-actions">
+        <button type="button" id="export-all-json-btn" class="btn" data-i18n="optionsExportAllJson">Export ALL cookies (JSON)</button>
+        <button type="button" id="export-all-netscape-btn" class="btn" data-i18n="optionsExportAllNetscape">Export ALL cookies (Netscape)</button>
+      </div>
+      <hr class="menu-sep" />
+      <div class="options-row options-check">
+        <label><input type="checkbox" id="opt-autobackup" /> <span data-i18n="backupsAutoToggle">Automatic daily backup</span></label>
+      </div>
+      <p class="panel-hint" data-i18n="backupsHint">
+        Once a day, a snapshot of every cookie in this browser profile is stored locally. The 5 newest
+        days are kept. Restoring a backup merges its cookies back into the browser.
+      </p>
+      <div class="options-actions">
+        <button type="button" id="backup-now-btn" class="btn" data-i18n="backupsRunNow">Back up now</button>
+      </div>
+      <h3 class="options-subhead" data-i18n="backupsListTitle">Backups (last 5 days)</h3>
+      <div id="backup-list" class="profile-list"></div>
+      <hr class="menu-sep" />
+      <div class="options-actions">
+        <input
+          id="delete-all-confirm"
+          type="text"
+          data-i18n-placeholder="optionsDeletePlaceholder"
+          data-i18n-aria-label="optionsDeleteAria"
+          placeholder="Type DELETE to confirm"
+          aria-label="Type DELETE to enable the delete button"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button type="button" id="delete-all-everywhere-btn" class="btn danger" disabled data-i18n="optionsDeleteAllBtn">Delete ALL cookies</button>
+      </div>
+      <p class="panel-hint" data-i18n="optionsDeleteWarning">Deleting cannot be undone. Logins and sessions in every site will be lost.</p>
+    </section>
+
+    <section class="options-section" aria-labelledby="sec-profiles">
+      <h2 id="sec-profiles" data-i18n="optionsProfilesTitle">Profiles</h2>
+      <p class="panel-hint" data-i18n="optionsProfilesHint">Saved cookie sets from the popup. Restore profiles from the popup while on the target site.</p>
+      <div id="options-profile-list" class="profile-list"></div>
+    </section>
+
+    <section class="options-section" aria-labelledby="sec-about">
+      <h2 id="sec-about" data-i18n="optionsAbout">About</h2>
+      <p id="about-version">CookieLens</p>
+      <p data-i18n="optionsPrivacy">
+        CookieLens is 100% offline: no analytics, no remote code, and your cookie data never
+        leaves the browser.
+      </p>
+      <h3 class="options-subhead" data-i18n="optionsShortcutsTitle">Keyboard shortcuts</h3>
+      <ul class="shortcut-list">
+        <li><kbd>Alt+Shift+C</kbd> &mdash; <span data-i18n="optionsShortcutPanel">open the side panel</span></li>
+        <li><kbd>Alt+Shift+E</kbd> &mdash; <span data-i18n="optionsShortcutExport">copy this site's cookies as JSON to the clipboard</span></li>
+        <li><kbd>Alt+Shift+D</kbd> &mdash; <span data-i18n="optionsShortcutDelete">delete all cookies for this site &mdash; press twice to confirm</span></li>
+      </ul>
+      <p class="panel-hint" data-i18n="optionsShortcutsHint">
+        Shortcuts can be changed in your browser's extension shortcut settings (chrome://extensions/shortcuts).
+      </p>
+      <p data-i18n="optionsLicense">Released under the MIT License.</p>
+      <p data-i18n="optionsLanguageNote">The interface language follows your browser's language.</p>
+    </section>
+  </main>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

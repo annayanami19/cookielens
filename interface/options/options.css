@@ -1,0 +1,138 @@
+/* Cookie Editor Pro — options page layout.
+   Reuses popup.css for theme variables and components; this file only
+   overrides the popup's fixed width and adds page/section layout. */
+
+body {
+  width: auto;
+  min-width: 320px;
+}
+
+.options-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+.options-section {
+  padding: 16px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.options-section h2 {
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+
+.options-section p {
+  margin: 6px 0;
+  font-size: 12px;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.options-section a {
+  color: var(--accent-strong);
+}
+
+.options-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.options-row.options-check {
+  justify-content: flex-start;
+}
+
+.options-row.options-check label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.options-row > label {
+  flex: none;
+}
+
+.options-row select {
+  min-width: 170px;
+  padding: 6px 8px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.options-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.options-actions input[type="text"] {
+  flex: 1;
+  min-width: 180px;
+  padding: 6px 10px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.options-actions input[type="text"]:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+/* Danger zone accent. */
+.danger-zone {
+  border-color: color-mix(in srgb, var(--danger) 35%, transparent);
+}
+
+.danger-zone h2 {
+  color: var(--danger);
+}
+
+/* Small sub-headings inside a section (backups list, About shortcuts). */
+.options-subhead {
+  margin: 14px 0 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Keyboard-shortcut list in the About section. */
+.shortcut-list {
+  margin: 6px 0;
+  padding-left: 18px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.shortcut-list li {
+  margin: 4px 0;
+}
+
+.shortcut-list kbd {
+  padding: 1px 5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}

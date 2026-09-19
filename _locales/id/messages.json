@@ -1,0 +1,850 @@
+{
+  "extName": {
+    "message": "CookieLens",
+    "description": "Extension name shown in the manifest, toolbar and About section."
+  },
+  "extDesc": {
+    "message": "Lihat, buat, ubah, hapus, ekspor, dan impor cookie — sepenuhnya offline, tanpa iklan, tanpa pelacakan.",
+    "description": "Extension description shown in store listings and extension management."
+  },
+  "cmdOpenSidePanel": {
+    "message": "Buka side panel CookieLens",
+    "description": "Description of the open-side-panel keyboard command."
+  },
+  "cmdExportSiteJson": {
+    "message": "Salin cookie situs ini sebagai JSON ke papan klip",
+    "description": "Description of the export-site-json keyboard command."
+  },
+  "cmdDeleteSiteCookies": {
+    "message": "Hapus semua cookie untuk situs ini (tekan dua kali untuk konfirmasi)",
+    "description": "Description of the delete-site-cookies keyboard command."
+  },
+  "menuOpen": {
+    "message": "Buka Cookie Editor",
+    "description": "Context-menu item that opens the editor panel."
+  },
+  "menuExportJson": {
+    "message": "Ekspor cookie situs ini sebagai JSON",
+    "description": "Context-menu item that copies the site's cookies as JSON."
+  },
+  "commonCancel": {
+    "message": "Batal",
+    "description": "Generic cancel button."
+  },
+  "commonSave": {
+    "message": "Simpan",
+    "description": "Generic save button."
+  },
+  "commonClose": {
+    "message": "Tutup",
+    "description": "Generic close button."
+  },
+  "commonDelete": {
+    "message": "Hapus",
+    "description": "Generic delete button."
+  },
+  "commonUndo": {
+    "message": "Urungkan",
+    "description": "Toast action that reverts a deletion."
+  },
+  "commonDownloadJson": {
+    "message": "Unduh JSON",
+    "description": "Button that downloads data as a JSON file."
+  },
+  "commonRestore": {
+    "message": "Pulihkan",
+    "description": "Button that restores data from a backup or profile."
+  },
+  "commonGlobal": {
+    "message": "Global",
+    "description": "Label for a profile/backup not bound to a specific domain."
+  },
+  "commonCookieCount": {
+    "message": "$1 cookie",
+    "description": "Number of cookies, e.g. \"3 cookie\". $1 = count."
+  },
+  "commonFailedCount": {
+    "message": "$1 gagal",
+    "description": "Number of failed operations, appended to result messages. $1 = count."
+  },
+  "commonSkippedProtected": {
+    "message": "$1 terlindungi dilewati",
+    "description": "Number of protected cookies skipped during deletion, appended to result messages. $1 = count."
+  },
+  "commonDeletedCount": {
+    "message": "Menghapus $1 cookie",
+    "description": "Deletion result. $1 = number of deleted cookies."
+  },
+  "commonCopiedName": {
+    "message": "Nama \"$1\" disalin.",
+    "description": "Toast after copying a cookie name. $1 = name (possibly truncated)."
+  },
+  "commonCopiedValue": {
+    "message": "Nilai dari \"$1\" disalin.",
+    "description": "Toast after copying a cookie value. $1 = cookie name (possibly truncated)."
+  },
+  "commonCopiedJson": {
+    "message": "\"$1\" disalin sebagai JSON.",
+    "description": "Toast after copying a cookie as JSON. $1 = cookie name (possibly truncated)."
+  },
+  "commonCopyFailed": {
+    "message": "Gagal menyalin: $1",
+    "description": "Toast when copying to the clipboard fails. $1 = error message."
+  },
+  "commonExportFailed": {
+    "message": "Gagal mengekspor: $1",
+    "description": "Toast when an export fails. $1 = error message."
+  },
+  "commonImportFailed": {
+    "message": "Impor gagal: $1",
+    "description": "Toast when an import fails. $1 = error message."
+  },
+  "commonDismissToast": {
+    "message": "Tutup notifikasi",
+    "description": "Accessibility label of the toast close button."
+  },
+  "commonSavedAt": {
+    "message": "disimpan $1",
+    "description": "Profile metadata fragment. $1 = formatted timestamp."
+  },
+  "commonErrorLoadProfiles": {
+    "message": "Tidak dapat memuat profil: $1",
+    "description": "Toast when the profile list cannot be read. $1 = error message."
+  },
+  "commonProfileDeleted": {
+    "message": "Profil \"$1\" dihapus.",
+    "description": "Toast after deleting a profile. $1 = profile name."
+  },
+  "commonErrorProfileDelete": {
+    "message": "Tidak dapat menghapus profil: $1",
+    "description": "Toast when deleting a profile fails. $1 = error message."
+  },
+  "commonErrorRestore": {
+    "message": "Tidak dapat memulihkan cookie: $1",
+    "description": "Toast when restoring deleted cookies fails. $1 = error message."
+  },
+  "popupMenu": {
+    "message": "Menu",
+    "description": "Accessibility label of the popup header menu button."
+  },
+  "popupShowAdvanced": {
+    "message": "Tampilkan lanjutan",
+    "description": "Popup menu checkbox that reveals advanced cookie fields."
+  },
+  "popupOpenSidePanel": {
+    "message": "Buka side panel",
+    "description": "Popup menu item that opens the side panel."
+  },
+  "popupOpenOptions": {
+    "message": "Pengaturan",
+    "description": "Popup menu item that opens the options page."
+  },
+  "popupPermissionTitle": {
+    "message": "Perlu izin",
+    "description": "Title of the permission screen."
+  },
+  "popupPermissionTextGeneric": {
+    "message": "Cookie Editor butuh izin untuk membaca dan mengubah cookie di situs ini.",
+    "description": "Fallback text of the permission screen before the hostname is known."
+  },
+  "popupPermissionText": {
+    "message": "Cookie Editor butuh izin untuk membaca dan mengubah cookie di $1.",
+    "description": "Permission screen text. $1 = hostname of the current site."
+  },
+  "popupAllowSite": {
+    "message": "Izinkan situs ini",
+    "description": "Button that grants host permission for the current site."
+  },
+  "popupAllowAll": {
+    "message": "Izinkan semua situs",
+    "description": "Button that grants host permission for all sites."
+  },
+  "popupRestrictedTitle": {
+    "message": "Halaman terbatas",
+    "description": "Title of the restricted-page screen."
+  },
+  "popupRestrictedText": {
+    "message": "Cookie Editor tidak dapat berjalan di halaman ini.",
+    "description": "Text of the restricted-page screen."
+  },
+  "popupSearchPlaceholder": {
+    "message": "Cari cookie…",
+    "description": "Placeholder of the cookie search input."
+  },
+  "popupSearchAria": {
+    "message": "Cari cookie",
+    "description": "Accessibility label of the cookie search input."
+  },
+  "popupSortBy": {
+    "message": "Urutkan cookie berdasarkan",
+    "description": "Accessibility label of the sort column select."
+  },
+  "popupSortName": {
+    "message": "Nama",
+    "description": "Sort column: cookie name."
+  },
+  "popupSortDomain": {
+    "message": "Domain",
+    "description": "Sort column: cookie domain."
+  },
+  "popupSortExpiration": {
+    "message": "Kedaluwarsa",
+    "description": "Sort column: cookie expiration date."
+  },
+  "popupSortDirection": {
+    "message": "Ubah arah pengurutan",
+    "description": "Label of the sort direction toggle button."
+  },
+  "popupBulkZeroSelected": {
+    "message": "0 dipilih",
+    "description": "Bulk bar counter when nothing is selected."
+  },
+  "popupBulkSelected": {
+    "message": "$1 dipilih",
+    "description": "Bulk bar counter. $1 = number of selected cookies."
+  },
+  "popupBulkToggleAll": {
+    "message": "Pilih semua/kosongkan",
+    "description": "Bulk bar button that selects or deselects the visible cookies."
+  },
+  "popupBulkExport": {
+    "message": "Ekspor JSON",
+    "description": "Bulk bar button that copies the selected cookies as JSON."
+  },
+  "popupFormAria": {
+    "message": "Formulir cookie",
+    "description": "Accessibility label of the add/edit cookie panel."
+  },
+  "popupAddCookie": {
+    "message": "Tambah cookie",
+    "description": "Title of the add-cookie form."
+  },
+  "popupEditCookie": {
+    "message": "Edit cookie",
+    "description": "Title of the edit-cookie form."
+  },
+  "popupFieldName": {
+    "message": "Nama",
+    "description": "Form label: cookie name."
+  },
+  "popupFieldValue": {
+    "message": "Nilai",
+    "description": "Form label: cookie value."
+  },
+  "popupFieldDomain": {
+    "message": "Domain",
+    "description": "Form label: cookie domain."
+  },
+  "popupFieldPath": {
+    "message": "Path",
+    "description": "Form label: cookie path (technical name)."
+  },
+  "popupFieldSameSite": {
+    "message": "SameSite",
+    "description": "Form label: SameSite attribute (technical name)."
+  },
+  "popupFieldExpiration": {
+    "message": "Kedaluwarsa",
+    "description": "Form label: cookie expiration."
+  },
+  "popupExpiryHour": {
+    "message": "+1 jam",
+    "description": "Shortcut button: set expiration one hour from now."
+  },
+  "popupExpiryDay": {
+    "message": "+1 hari",
+    "description": "Shortcut button: set expiration one day from now."
+  },
+  "popupExpiryWeek": {
+    "message": "+1 minggu",
+    "description": "Shortcut button: set expiration one week from now."
+  },
+  "popupFieldHostOnly": {
+    "message": "Host-only",
+    "description": "Form checkbox: host-only cookie (technical name)."
+  },
+  "popupFieldSession": {
+    "message": "Sesi",
+    "description": "Form checkbox and cookie chip: session cookie."
+  },
+  "popupFieldSecure": {
+    "message": "Secure",
+    "description": "Form checkbox and cookie chip: Secure attribute (technical name)."
+  },
+  "popupFieldHttpOnly": {
+    "message": "Http-Only",
+    "description": "Form checkbox: HttpOnly attribute (technical name)."
+  },
+  "popupImportAria": {
+    "message": "Impor cookie",
+    "description": "Accessibility label of the import panel."
+  },
+  "popupImportTitle": {
+    "message": "Impor cookie",
+    "description": "Title of the import panel."
+  },
+  "popupImportHint": {
+    "message": "Tempel JSON, Netscape, atau Header String — format dideteksi secara otomatis.",
+    "description": "Hint above the import textarea."
+  },
+  "popupImportTextareaAria": {
+    "message": "Data cookie untuk diimpor",
+    "description": "Accessibility label of the import textarea."
+  },
+  "popupChooseFile": {
+    "message": "Pilih berkas…",
+    "description": "Button that opens the import file picker."
+  },
+  "popupImportBtn": {
+    "message": "Impor",
+    "description": "Import button (panel submit and footer button)."
+  },
+  "popupProfilesAria": {
+    "message": "Profil cookie",
+    "description": "Accessibility label of the profiles panel."
+  },
+  "popupProfilesTitle": {
+    "message": "Profil cookie",
+    "description": "Title of the profiles panel."
+  },
+  "popupProfilesHint": {
+    "message": "Simpan cookie situs ini dengan sebuah nama untuk dipulihkan nanti. Merge mempertahankan cookie saat ini; replace menghapusnya terlebih dahulu (cookie terlindungi tetap dipertahankan).",
+    "description": "Hint in the profiles panel."
+  },
+  "popupProfileNamePlaceholder": {
+    "message": "Nama profil",
+    "description": "Placeholder of the profile name input."
+  },
+  "popupProfileNameAria": {
+    "message": "Nama profil",
+    "description": "Accessibility label of the profile name input."
+  },
+  "popupProfileBindTo": {
+    "message": "Ikat ke",
+    "description": "Label before the hostname the profile is bound to."
+  },
+  "popupProfilesBtn": {
+    "message": "Profil",
+    "description": "Footer button that opens the profiles panel."
+  },
+  "popupAddBtn": {
+    "message": "+ Tambah",
+    "description": "Footer button that opens the add-cookie form."
+  },
+  "popupDeleteAll": {
+    "message": "Hapus Semua",
+    "description": "Danger button that deletes all cookies of the current site."
+  },
+  "popupConfirmDeleteAll": {
+    "message": "Konfirmasi hapus semua",
+    "description": "Armed state of the Delete All button."
+  },
+  "popupExport": {
+    "message": "Ekspor",
+    "description": "Main export button."
+  },
+  "popupCopiedFeedback": {
+    "message": "✓ Tersalin",
+    "description": "Transient state of the export button after copying."
+  },
+  "popupMoreExport": {
+    "message": "Opsi ekspor lainnya",
+    "description": "Accessibility label of the export menu caret button."
+  },
+  "popupExportGroupCopy": {
+    "message": "Salin",
+    "description": "Export menu group label for clipboard actions."
+  },
+  "popupExportGroupDownload": {
+    "message": "Unduh berkas",
+    "description": "Export menu group label for file download actions."
+  },
+  "exportFormatJson": {
+    "message": "JSON",
+    "description": "Format name: JSON."
+  },
+  "exportFormatNetscape": {
+    "message": "Netscape",
+    "description": "Format name: Netscape cookie file."
+  },
+  "exportFormatHeaderString": {
+    "message": "Header String",
+    "description": "Format name: HTTP header string."
+  },
+  "exportFormatCurlBash": {
+    "message": "cURL (bash)",
+    "description": "Format name: cURL command for bash."
+  },
+  "exportFormatCurlCmd": {
+    "message": "cURL (CMD)",
+    "description": "Format name: cURL command for Windows CMD."
+  },
+  "popupAriaSelect": {
+    "message": "Pilih \"$1\"",
+    "description": "Accessibility label of a row checkbox. $1 = cookie name."
+  },
+  "popupCopyNameTitle": {
+    "message": "Salin nama",
+    "description": "Tooltip of the cookie name button."
+  },
+  "popupAriaUnpin": {
+    "message": "Lepas pin \"$1\"",
+    "description": "Accessibility label of the pin button when pinned. $1 = cookie name."
+  },
+  "popupAriaPin": {
+    "message": "Pin \"$1\"",
+    "description": "Accessibility label of the pin button. $1 = cookie name."
+  },
+  "popupPinTitle": {
+    "message": "Pin",
+    "description": "Tooltip of the pin button."
+  },
+  "popupAriaProtectRemove": {
+    "message": "Hapus perlindungan \"$1\"",
+    "description": "Accessibility label of the protect button when active. $1 = cookie name."
+  },
+  "popupAriaProtect": {
+    "message": "Lindungi \"$1\"",
+    "description": "Accessibility label of the protect button. $1 = cookie name."
+  },
+  "popupProtectTitle": {
+    "message": "Lindungi",
+    "description": "Tooltip of the protect button."
+  },
+  "popupAriaCopyJson": {
+    "message": "Salin cookie sebagai JSON",
+    "description": "Accessibility label of the copy-as-JSON button."
+  },
+  "popupCopyJsonTitle": {
+    "message": "Salin sebagai JSON",
+    "description": "Tooltip of the copy-as-JSON button."
+  },
+  "popupAriaEditCookie": {
+    "message": "Edit cookie",
+    "description": "Accessibility label of the row edit button."
+  },
+  "popupEditTitle": {
+    "message": "Edit",
+    "description": "Tooltip of the row edit button."
+  },
+  "popupAriaDeleteCookie": {
+    "message": "Hapus cookie",
+    "description": "Accessibility label of the row delete button."
+  },
+  "popupDeleteTitle": {
+    "message": "Hapus",
+    "description": "Tooltip of the row delete button."
+  },
+  "popupAriaCopyValue": {
+    "message": "Salin nilai \"$1\"",
+    "description": "Accessibility label of the value button. $1 = cookie name."
+  },
+  "popupChipHttpOnly": {
+    "message": "HttpOnly",
+    "description": "Cookie chip: HttpOnly attribute (technical name)."
+  },
+  "popupChipSecure": {
+    "message": "Secure",
+    "description": "Cookie chip: Secure attribute (technical name)."
+  },
+  "popupChipSession": {
+    "message": "Sesi",
+    "description": "Cookie chip: session cookie."
+  },
+  "popupEmptyNone": {
+    "message": "Halaman ini tidak memiliki cookie.",
+    "description": "Empty state when the site has no cookies."
+  },
+  "popupEmptyNoMatch": {
+    "message": "Tidak ada cookie yang cocok dengan pencarian.",
+    "description": "Empty state when the search filter matches nothing."
+  },
+  "popupErrorOpenSidePanel": {
+    "message": "Tidak dapat membuka side panel: $1",
+    "description": "Toast when opening the side panel fails. $1 = error message."
+  },
+  "popupErrorLoadCookies": {
+    "message": "Gagal memuat cookie: $1",
+    "description": "Toast when loading the cookie list fails. $1 = error message."
+  },
+  "popupErrorNameRequired": {
+    "message": "Nama cookie wajib diisi.",
+    "description": "Toast when saving a cookie without a name."
+  },
+  "popupCookieSaved": {
+    "message": "Cookie tersimpan.",
+    "description": "Toast after saving a cookie."
+  },
+  "popupErrorSave": {
+    "message": "Tidak dapat menyimpan cookie: $1",
+    "description": "Toast when saving a cookie fails. $1 = error message."
+  },
+  "popupErrorDeleteCookie": {
+    "message": "Tidak dapat menghapus cookie: $1",
+    "description": "Toast when deleting one cookie fails. $1 = error message."
+  },
+  "popupErrorDeleteCookies": {
+    "message": "Tidak dapat menghapus cookie: $1",
+    "description": "Toast when a multi-cookie deletion fails. $1 = error message."
+  },
+  "popupErrorProfileRestore": {
+    "message": "Tidak dapat memulihkan profil: $1",
+    "description": "Toast when restoring a profile fails. $1 = error message."
+  },
+  "popupDeletedCookie": {
+    "message": "\"$1\" dihapus.",
+    "description": "Toast after deleting one cookie. $1 = cookie name (possibly truncated)."
+  },
+  "popupPinned": {
+    "message": "Dipin",
+    "description": "Toast after pinning a cookie."
+  },
+  "popupUnpinned": {
+    "message": "Pin dilepas",
+    "description": "Toast after unpinning a cookie."
+  },
+  "popupProtected": {
+    "message": "Dilindungi",
+    "description": "Toast after protecting a cookie."
+  },
+  "popupProtectionRemoved": {
+    "message": "Perlindungan dihapus",
+    "description": "Toast after removing the protection flag."
+  },
+  "popupErrorFlag": {
+    "message": "Tidak dapat memperbarui penanda: $1",
+    "description": "Toast when toggling pin/protect fails. $1 = error message."
+  },
+  "popupRestoredCount": {
+    "message": "$1 cookie dipulihkan.",
+    "description": "Toast after undoing a deletion. $1 = number of restored cookies."
+  },
+  "popupExportedCount": {
+    "message": "$1 cookie diekspor sebagai $2.",
+    "description": "Toast after copying an export. $1 = count, $2 = format name."
+  },
+  "popupDownloadedCount": {
+    "message": "$1 cookie diunduh sebagai $2.",
+    "description": "Toast after downloading an export file. $1 = count, $2 = format name."
+  },
+  "popupBulkExported": {
+    "message": "$1 cookie terpilih diekspor sebagai JSON.",
+    "description": "Toast after bulk export. $1 = number of exported cookies."
+  },
+  "popupFileLoaded": {
+    "message": "$1 dimuat.",
+    "description": "Toast after reading an import file. $1 = file name."
+  },
+  "popupErrorReadFile": {
+    "message": "Tidak dapat membaca berkas: $1",
+    "description": "Toast when reading an import file fails. $1 = file name."
+  },
+  "popupErrorInvalidFormat": {
+    "message": "Masukan bukan format yang valid.",
+    "description": "Toast when the import text matches no known format."
+  },
+  "popupImportedCount": {
+    "message": "$1 cookie diimpor, $2 gagal — format: $3.",
+    "description": "Toast after an import. $1 = imported, $2 = failed, $3 = detected format."
+  },
+  "popupProfilesEmpty": {
+    "message": "Belum ada profil yang disimpan.",
+    "description": "Empty state of the profile list."
+  },
+  "popupProfileMerge": {
+    "message": "Merge",
+    "description": "Profile restore mode: keep current cookies."
+  },
+  "popupProfileReplace": {
+    "message": "Replace",
+    "description": "Profile restore mode: delete current cookies first."
+  },
+  "popupProfileRestoreMergeTitle": {
+    "message": "Pulihkan \"$1\" (merge dengan cookie saat ini)",
+    "description": "Tooltip of the profile Merge button. $1 = profile name."
+  },
+  "popupProfileRestoreReplaceTitle": {
+    "message": "Pulihkan \"$1\" (ganti cookie situs ini)",
+    "description": "Tooltip of the profile Replace button. $1 = profile name."
+  },
+  "popupAriaProfileDuplicate": {
+    "message": "Duplikat profil \"$1\"",
+    "description": "Accessibility label of the profile duplicate button. $1 = profile name."
+  },
+  "popupAriaProfileRename": {
+    "message": "Ganti nama profil \"$1\"",
+    "description": "Accessibility label of the profile rename button/input. $1 = profile name."
+  },
+  "popupAriaProfileDelete": {
+    "message": "Hapus profil \"$1\"",
+    "description": "Accessibility label of the profile delete button. $1 = profile name."
+  },
+  "popupProfileRenamed": {
+    "message": "Nama profil diganti.",
+    "description": "Toast after renaming a profile."
+  },
+  "popupErrorProfileRename": {
+    "message": "Tidak dapat mengganti nama profil: $1",
+    "description": "Toast when renaming a profile fails. $1 = error message."
+  },
+  "popupErrorProfileName": {
+    "message": "Nama profil wajib diisi.",
+    "description": "Toast when saving a profile without a name."
+  },
+  "popupProfileSaved": {
+    "message": "\"$1\" disimpan ($2).",
+    "description": "Toast after saving a profile. $1 = name, $2 = cookie count fragment."
+  },
+  "popupErrorProfileSave": {
+    "message": "Tidak dapat menyimpan profil: $1",
+    "description": "Toast when saving a profile fails. $1 = error message."
+  },
+  "popupProfileRestored": {
+    "message": "$1 cookie dipulihkan dari \"$2\" ($3)",
+    "description": "Toast after restoring a profile (a failure fragment and a period may be appended). $1 = imported, $2 = profile name, $3 = mode."
+  },
+  "popupProfileDuplicated": {
+    "message": "\"$1\" diduplikasi.",
+    "description": "Toast after duplicating a profile. $1 = profile name."
+  },
+  "popupErrorProfileDuplicate": {
+    "message": "Tidak dapat menduplikasi profil: $1",
+    "description": "Toast when duplicating a profile fails. $1 = error message."
+  },
+  "optionsTitle": {
+    "message": "Pengaturan",
+    "description": "Options page title suffix."
+  },
+  "optionsGeneral": {
+    "message": "Umum",
+    "description": "Options section heading: general settings."
+  },
+  "optionsOpenTarget": {
+    "message": "Buka lewat",
+    "description": "General option: what opens when the toolbar icon is clicked."
+  },
+  "optionsOpenTargetPanel": {
+    "message": "Panel samping",
+    "description": "Open-target choice: the browser side panel."
+  },
+  "optionsOpenTargetPopup": {
+    "message": "Popup",
+    "description": "Open-target choice: the toolbar popup."
+  },
+  "optionsTheme": {
+    "message": "Tema",
+    "description": "Option label: color theme."
+  },
+  "optionsThemeAuto": {
+    "message": "Otomatis",
+    "description": "Theme choice: follow the system."
+  },
+  "optionsThemeLight": {
+    "message": "Terang",
+    "description": "Theme choice: light."
+  },
+  "optionsThemeDark": {
+    "message": "Gelap",
+    "description": "Theme choice: dark."
+  },
+  "optionsAdvancedDefault": {
+    "message": "Mode lanjutan secara bawaan",
+    "description": "Checkbox: show advanced fields by default."
+  },
+  "optionsAnimations": {
+    "message": "Animasi",
+    "description": "Checkbox: enable UI animations."
+  },
+  "optionsBarPosition": {
+    "message": "Posisi baris tombol",
+    "description": "Option label: where the popup button bar sits."
+  },
+  "optionsBarBottom": {
+    "message": "Bawah",
+    "description": "Button bar at the bottom."
+  },
+  "optionsBarTop": {
+    "message": "Atas",
+    "description": "Button bar at the top."
+  },
+  "optionsExtraInfo": {
+    "message": "Kolom info tambahan",
+    "description": "Option label: the second column of each cookie row."
+  },
+  "optionsExtraValue": {
+    "message": "Nilai",
+    "description": "Extra info choice: cookie value."
+  },
+  "optionsExtraDomain": {
+    "message": "Domain",
+    "description": "Extra info choice: cookie domain."
+  },
+  "optionsExtraPath": {
+    "message": "Path",
+    "description": "Extra info choice: cookie path (technical name)."
+  },
+  "optionsExtraExpiry": {
+    "message": "Kedaluwarsa",
+    "description": "Extra info choice: cookie expiration."
+  },
+  "optionsExtraSameSite": {
+    "message": "SameSite",
+    "description": "Extra info choice: SameSite attribute (technical name)."
+  },
+  "optionsExport": {
+    "message": "Ekspor",
+    "description": "Options section heading: export settings."
+  },
+  "optionsExportFormat": {
+    "message": "Format ekspor bawaan",
+    "description": "Option label: the format used by the main export button."
+  },
+  "optionsExportAsk": {
+    "message": "Tanya setiap saat",
+    "description": "Export format choice: open the menu each time."
+  },
+  "optionsDataTitle": {
+    "message": "Data (zona berbahaya)",
+    "description": "Options section heading: browser-wide data actions."
+  },
+  "optionsDataHint": {
+    "message": "Aksi ini mencakup semua cookie di semua cookie store profil browser ini — bukan hanya situs yang tampil di popup.",
+    "description": "Hint under the Data section heading."
+  },
+  "optionsExportAllJson": {
+    "message": "Ekspor SEMUA cookie (JSON)",
+    "description": "Button that downloads every cookie as JSON."
+  },
+  "optionsExportAllNetscape": {
+    "message": "Ekspor SEMUA cookie (Netscape)",
+    "description": "Button that downloads every cookie in Netscape format."
+  },
+  "optionsDeletePlaceholder": {
+    "message": "Ketik DELETE untuk konfirmasi",
+    "description": "Placeholder of the delete-all confirmation input."
+  },
+  "optionsDeleteAria": {
+    "message": "Ketik DELETE untuk mengaktifkan tombol hapus",
+    "description": "Accessibility label of the delete-all confirmation input."
+  },
+  "optionsDeleteAllBtn": {
+    "message": "Hapus SEMUA cookie",
+    "description": "Button that deletes every cookie in the browser."
+  },
+  "optionsDeleteWarning": {
+    "message": "Penghapusan tidak dapat dibatalkan. Login dan sesi di semua situs akan hilang.",
+    "description": "Warning under the delete-all button."
+  },
+  "optionsProfilesTitle": {
+    "message": "Profil",
+    "description": "Options section heading: saved profiles."
+  },
+  "optionsProfilesHint": {
+    "message": "Set cookie yang disimpan dari popup. Pulihkan profil dari popup saat berada di situs tujuan.",
+    "description": "Hint under the Profiles section heading."
+  },
+  "optionsAbout": {
+    "message": "Tentang",
+    "description": "Options section heading: about the extension."
+  },
+  "optionsPrivacy": {
+    "message": "CookieLens 100% offline: tanpa analitik, tanpa kode remote, dan data cookie Anda tidak pernah keluar dari browser.",
+    "description": "Privacy statement in the About section."
+  },
+  "optionsShortcutsTitle": {
+    "message": "Pintasan keyboard",
+    "description": "About subheading: keyboard shortcuts."
+  },
+  "optionsShortcutPanel": {
+    "message": "membuka side panel",
+    "description": "Description of Alt+Shift+C (after the key)."
+  },
+  "optionsShortcutExport": {
+    "message": "menyalin cookie situs ini sebagai JSON ke papan klip",
+    "description": "Description of Alt+Shift+E (after the key)."
+  },
+  "optionsShortcutDelete": {
+    "message": "menghapus semua cookie situs ini — tekan dua kali untuk konfirmasi",
+    "description": "Description of Alt+Shift+D (after the key)."
+  },
+  "optionsShortcutsHint": {
+    "message": "Pintasan dapat diubah di pengaturan pintasan ekstensi browser (chrome://extensions/shortcuts).",
+    "description": "Hint under the shortcut list."
+  },
+  "optionsLicense": {
+    "message": "Dirilis di bawah Lisensi MIT.",
+    "description": "License line in the About section."
+  },
+  "optionsLanguageNote": {
+    "message": "Bahasa antarmuka mengikuti bahasa browser Anda.",
+    "description": "About note on how the display language is chosen."
+  },
+  "optionsErrorSaveOption": {
+    "message": "Tidak dapat menyimpan pengaturan: $1",
+    "description": "Toast when persisting an option fails. $1 = error message."
+  },
+  "optionsExportedAll": {
+    "message": "$1 cookie diekspor dari $2 cookie store.",
+    "description": "Toast after exporting all cookies. $1 = count, $2 = number of stores."
+  },
+  "optionsErrorDeleteAll": {
+    "message": "Gagal menghapus: $1",
+    "description": "Toast when the browser-wide delete fails. $1 = error message."
+  },
+  "optionsProfileDownloaded": {
+    "message": "\"$1\" diunduh ($2).",
+    "description": "Toast after downloading a profile. $1 = profile name, $2 = cookie count fragment."
+  },
+  "optionsErrorDownloadProfile": {
+    "message": "Tidak dapat mengunduh profil: $1",
+    "description": "Toast when downloading a profile fails. $1 = error message."
+  },
+  "backupsAutoToggle": {
+    "message": "Pencadangan harian otomatis",
+    "description": "Checkbox: take an automatic backup once a day."
+  },
+  "backupsHint": {
+    "message": "Sekali sehari, cuplikan seluruh cookie di profil browser ini disimpan secara lokal. Lima hari terakhir disimpan. Memulihkan cadangan akan menggabungkan (merge) cookie-nya kembali ke browser.",
+    "description": "Hint explaining the automatic backup."
+  },
+  "backupsRunNow": {
+    "message": "Cadangkan sekarang",
+    "description": "Button that takes a backup immediately."
+  },
+  "backupsListTitle": {
+    "message": "Cadangan (5 hari terakhir)",
+    "description": "Subheading above the backup list."
+  },
+  "backupsEmpty": {
+    "message": "Belum ada cadangan.",
+    "description": "Empty state of the backup list."
+  },
+  "backupsSaved": {
+    "message": "Cadangan disimpan: $1 ($2).",
+    "description": "Toast after a backup. $1 = date, $2 = cookie count fragment."
+  },
+  "backupsError": {
+    "message": "Pencadangan gagal: $1",
+    "description": "Toast when a backup fails. $1 = error message."
+  },
+  "backupsDownloaded": {
+    "message": "Cadangan $1 diunduh.",
+    "description": "Toast after downloading a backup. $1 = date."
+  },
+  "backupsRestored": {
+    "message": "$1 cookie dipulihkan dari $2",
+    "description": "Toast after restoring a backup (a failure fragment and a period may be appended). $1 = imported, $2 = date."
+  },
+  "backupsErrorRestore": {
+    "message": "Tidak dapat memulihkan cadangan: $1",
+    "description": "Toast when restoring a backup fails. $1 = error message."
+  },
+  "backupsDeleted": {
+    "message": "Cadangan $1 dihapus.",
+    "description": "Toast after deleting a backup. $1 = date."
+  },
+  "backupsErrorDelete": {
+    "message": "Tidak dapat menghapus cadangan: $1",
+    "description": "Toast when deleting a backup fails. $1 = error message."
+  }
+}

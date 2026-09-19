@@ -1,0 +1,850 @@
+{
+  "extName": {
+    "message": "CookieLens",
+    "description": "Extension name shown in the manifest, toolbar and About section."
+  },
+  "extDesc": {
+    "message": "View, create, edit, delete, export and import cookies — fully offline, no ads, no tracking.",
+    "description": "Extension description shown in store listings and extension management."
+  },
+  "cmdOpenSidePanel": {
+    "message": "Open the CookieLens side panel",
+    "description": "Description of the open-side-panel keyboard command."
+  },
+  "cmdExportSiteJson": {
+    "message": "Copy this site's cookies as JSON to the clipboard",
+    "description": "Description of the export-site-json keyboard command."
+  },
+  "cmdDeleteSiteCookies": {
+    "message": "Delete all cookies for this site (press twice to confirm)",
+    "description": "Description of the delete-site-cookies keyboard command."
+  },
+  "menuOpen": {
+    "message": "Open Cookie Editor",
+    "description": "Context-menu item that opens the editor panel."
+  },
+  "menuExportJson": {
+    "message": "Export this site's cookies as JSON",
+    "description": "Context-menu item that copies the site's cookies as JSON."
+  },
+  "commonCancel": {
+    "message": "Cancel",
+    "description": "Generic cancel button."
+  },
+  "commonSave": {
+    "message": "Save",
+    "description": "Generic save button."
+  },
+  "commonClose": {
+    "message": "Close",
+    "description": "Generic close button."
+  },
+  "commonDelete": {
+    "message": "Delete",
+    "description": "Generic delete button."
+  },
+  "commonUndo": {
+    "message": "Undo",
+    "description": "Toast action that reverts a deletion."
+  },
+  "commonDownloadJson": {
+    "message": "Download JSON",
+    "description": "Button that downloads data as a JSON file."
+  },
+  "commonRestore": {
+    "message": "Restore",
+    "description": "Button that restores data from a backup or profile."
+  },
+  "commonGlobal": {
+    "message": "Global",
+    "description": "Label for a profile/backup not bound to a specific domain."
+  },
+  "commonCookieCount": {
+    "message": "$1 cookie(s)",
+    "description": "Number of cookies, e.g. \"3 cookie(s)\". $1 = count."
+  },
+  "commonFailedCount": {
+    "message": "$1 failed",
+    "description": "Number of failed operations, appended to result messages. $1 = count."
+  },
+  "commonSkippedProtected": {
+    "message": "$1 protected skipped",
+    "description": "Number of protected cookies skipped during deletion, appended to result messages. $1 = count."
+  },
+  "commonDeletedCount": {
+    "message": "Deleted $1 cookie(s)",
+    "description": "Deletion result. $1 = number of deleted cookies."
+  },
+  "commonCopiedName": {
+    "message": "Copied name \"$1\".",
+    "description": "Toast after copying a cookie name. $1 = name (possibly truncated)."
+  },
+  "commonCopiedValue": {
+    "message": "Copied value of \"$1\".",
+    "description": "Toast after copying a cookie value. $1 = cookie name (possibly truncated)."
+  },
+  "commonCopiedJson": {
+    "message": "Copied \"$1\" as JSON.",
+    "description": "Toast after copying a cookie as JSON. $1 = cookie name (possibly truncated)."
+  },
+  "commonCopyFailed": {
+    "message": "Copy failed: $1",
+    "description": "Toast when copying to the clipboard fails. $1 = error message."
+  },
+  "commonExportFailed": {
+    "message": "Export failed: $1",
+    "description": "Toast when an export fails. $1 = error message."
+  },
+  "commonImportFailed": {
+    "message": "Import failed: $1",
+    "description": "Toast when an import fails. $1 = error message."
+  },
+  "commonDismissToast": {
+    "message": "Dismiss notification",
+    "description": "Accessibility label of the toast close button."
+  },
+  "commonSavedAt": {
+    "message": "saved $1",
+    "description": "Profile metadata fragment. $1 = formatted timestamp."
+  },
+  "commonErrorLoadProfiles": {
+    "message": "Could not load the profiles: $1",
+    "description": "Toast when the profile list cannot be read. $1 = error message."
+  },
+  "commonProfileDeleted": {
+    "message": "Deleted profile \"$1\".",
+    "description": "Toast after deleting a profile. $1 = profile name."
+  },
+  "commonErrorProfileDelete": {
+    "message": "Could not delete the profile: $1",
+    "description": "Toast when deleting a profile fails. $1 = error message."
+  },
+  "commonErrorRestore": {
+    "message": "Could not restore the cookies: $1",
+    "description": "Toast when restoring deleted cookies fails. $1 = error message."
+  },
+  "popupMenu": {
+    "message": "Menu",
+    "description": "Accessibility label of the popup header menu button."
+  },
+  "popupShowAdvanced": {
+    "message": "Show advanced",
+    "description": "Popup menu checkbox that reveals advanced cookie fields."
+  },
+  "popupOpenSidePanel": {
+    "message": "Open side panel",
+    "description": "Popup menu item that opens the side panel."
+  },
+  "popupOpenOptions": {
+    "message": "Options",
+    "description": "Popup menu item that opens the options page."
+  },
+  "popupPermissionTitle": {
+    "message": "Permission needed",
+    "description": "Title of the permission screen."
+  },
+  "popupPermissionTextGeneric": {
+    "message": "Cookie Editor needs permission to read and edit cookies on this site.",
+    "description": "Fallback text of the permission screen before the hostname is known."
+  },
+  "popupPermissionText": {
+    "message": "Cookie Editor needs permission to read and edit cookies on $1.",
+    "description": "Permission screen text. $1 = hostname of the current site."
+  },
+  "popupAllowSite": {
+    "message": "Allow this site",
+    "description": "Button that grants host permission for the current site."
+  },
+  "popupAllowAll": {
+    "message": "Allow all sites",
+    "description": "Button that grants host permission for all sites."
+  },
+  "popupRestrictedTitle": {
+    "message": "Restricted page",
+    "description": "Title of the restricted-page screen."
+  },
+  "popupRestrictedText": {
+    "message": "Cookie Editor cannot run on this page.",
+    "description": "Text of the restricted-page screen."
+  },
+  "popupSearchPlaceholder": {
+    "message": "Search cookies…",
+    "description": "Placeholder of the cookie search input."
+  },
+  "popupSearchAria": {
+    "message": "Search cookies",
+    "description": "Accessibility label of the cookie search input."
+  },
+  "popupSortBy": {
+    "message": "Sort cookies by",
+    "description": "Accessibility label of the sort column select."
+  },
+  "popupSortName": {
+    "message": "Name",
+    "description": "Sort column: cookie name."
+  },
+  "popupSortDomain": {
+    "message": "Domain",
+    "description": "Sort column: cookie domain."
+  },
+  "popupSortExpiration": {
+    "message": "Expiration",
+    "description": "Sort column: cookie expiration date."
+  },
+  "popupSortDirection": {
+    "message": "Toggle sort direction",
+    "description": "Label of the sort direction toggle button."
+  },
+  "popupBulkZeroSelected": {
+    "message": "0 selected",
+    "description": "Bulk bar counter when nothing is selected."
+  },
+  "popupBulkSelected": {
+    "message": "$1 selected",
+    "description": "Bulk bar counter. $1 = number of selected cookies."
+  },
+  "popupBulkToggleAll": {
+    "message": "Select all/none",
+    "description": "Bulk bar button that selects or deselects the visible cookies."
+  },
+  "popupBulkExport": {
+    "message": "Export JSON",
+    "description": "Bulk bar button that copies the selected cookies as JSON."
+  },
+  "popupFormAria": {
+    "message": "Cookie form",
+    "description": "Accessibility label of the add/edit cookie panel."
+  },
+  "popupAddCookie": {
+    "message": "Add cookie",
+    "description": "Title of the add-cookie form."
+  },
+  "popupEditCookie": {
+    "message": "Edit cookie",
+    "description": "Title of the edit-cookie form."
+  },
+  "popupFieldName": {
+    "message": "Name",
+    "description": "Form label: cookie name."
+  },
+  "popupFieldValue": {
+    "message": "Value",
+    "description": "Form label: cookie value."
+  },
+  "popupFieldDomain": {
+    "message": "Domain",
+    "description": "Form label: cookie domain."
+  },
+  "popupFieldPath": {
+    "message": "Path",
+    "description": "Form label: cookie path."
+  },
+  "popupFieldSameSite": {
+    "message": "SameSite",
+    "description": "Form label: SameSite attribute (technical name)."
+  },
+  "popupFieldExpiration": {
+    "message": "Expiration",
+    "description": "Form label: cookie expiration."
+  },
+  "popupExpiryHour": {
+    "message": "+1 hour",
+    "description": "Shortcut button: set expiration one hour from now."
+  },
+  "popupExpiryDay": {
+    "message": "+1 day",
+    "description": "Shortcut button: set expiration one day from now."
+  },
+  "popupExpiryWeek": {
+    "message": "+1 week",
+    "description": "Shortcut button: set expiration one week from now."
+  },
+  "popupFieldHostOnly": {
+    "message": "Host-only",
+    "description": "Form checkbox: host-only cookie."
+  },
+  "popupFieldSession": {
+    "message": "Session",
+    "description": "Form checkbox and cookie chip: session cookie."
+  },
+  "popupFieldSecure": {
+    "message": "Secure",
+    "description": "Form checkbox and cookie chip: Secure attribute."
+  },
+  "popupFieldHttpOnly": {
+    "message": "Http-Only",
+    "description": "Form checkbox: HttpOnly attribute."
+  },
+  "popupImportAria": {
+    "message": "Import cookies",
+    "description": "Accessibility label of the import panel."
+  },
+  "popupImportTitle": {
+    "message": "Import cookies",
+    "description": "Title of the import panel."
+  },
+  "popupImportHint": {
+    "message": "Paste JSON, Netscape or Header String — the format is detected automatically.",
+    "description": "Hint above the import textarea."
+  },
+  "popupImportTextareaAria": {
+    "message": "Cookie data to import",
+    "description": "Accessibility label of the import textarea."
+  },
+  "popupChooseFile": {
+    "message": "Choose file…",
+    "description": "Button that opens the import file picker."
+  },
+  "popupImportBtn": {
+    "message": "Import",
+    "description": "Import button (panel submit and footer button)."
+  },
+  "popupProfilesAria": {
+    "message": "Cookie profiles",
+    "description": "Accessibility label of the profiles panel."
+  },
+  "popupProfilesTitle": {
+    "message": "Cookie profiles",
+    "description": "Title of the profiles panel."
+  },
+  "popupProfilesHint": {
+    "message": "Save this site's cookies under a name and restore them later. Merge keeps current cookies; replace deletes them first (protected cookies are kept).",
+    "description": "Hint in the profiles panel."
+  },
+  "popupProfileNamePlaceholder": {
+    "message": "Profile name",
+    "description": "Placeholder of the profile name input."
+  },
+  "popupProfileNameAria": {
+    "message": "Profile name",
+    "description": "Accessibility label of the profile name input."
+  },
+  "popupProfileBindTo": {
+    "message": "Bind to",
+    "description": "Label before the hostname the profile is bound to."
+  },
+  "popupProfilesBtn": {
+    "message": "Profiles",
+    "description": "Footer button that opens the profiles panel."
+  },
+  "popupAddBtn": {
+    "message": "+ Add",
+    "description": "Footer button that opens the add-cookie form."
+  },
+  "popupDeleteAll": {
+    "message": "Delete All",
+    "description": "Danger button that deletes all cookies of the current site."
+  },
+  "popupConfirmDeleteAll": {
+    "message": "Confirm delete all",
+    "description": "Armed state of the Delete All button."
+  },
+  "popupExport": {
+    "message": "Export",
+    "description": "Main export button."
+  },
+  "popupCopiedFeedback": {
+    "message": "✓ Copied",
+    "description": "Transient state of the export button after copying."
+  },
+  "popupMoreExport": {
+    "message": "More export options",
+    "description": "Accessibility label of the export menu caret button."
+  },
+  "popupExportGroupCopy": {
+    "message": "Copy",
+    "description": "Export menu group label for clipboard actions."
+  },
+  "popupExportGroupDownload": {
+    "message": "Download file",
+    "description": "Export menu group label for file download actions."
+  },
+  "exportFormatJson": {
+    "message": "JSON",
+    "description": "Format name: JSON."
+  },
+  "exportFormatNetscape": {
+    "message": "Netscape",
+    "description": "Format name: Netscape cookie file."
+  },
+  "exportFormatHeaderString": {
+    "message": "Header String",
+    "description": "Format name: HTTP header string."
+  },
+  "exportFormatCurlBash": {
+    "message": "cURL (bash)",
+    "description": "Format name: cURL command for bash."
+  },
+  "exportFormatCurlCmd": {
+    "message": "cURL (CMD)",
+    "description": "Format name: cURL command for Windows CMD."
+  },
+  "popupAriaSelect": {
+    "message": "Select \"$1\"",
+    "description": "Accessibility label of a row checkbox. $1 = cookie name."
+  },
+  "popupCopyNameTitle": {
+    "message": "Copy name",
+    "description": "Tooltip of the cookie name button."
+  },
+  "popupAriaUnpin": {
+    "message": "Unpin \"$1\"",
+    "description": "Accessibility label of the pin button when pinned. $1 = cookie name."
+  },
+  "popupAriaPin": {
+    "message": "Pin \"$1\"",
+    "description": "Accessibility label of the pin button. $1 = cookie name."
+  },
+  "popupPinTitle": {
+    "message": "Pin",
+    "description": "Tooltip of the pin button."
+  },
+  "popupAriaProtectRemove": {
+    "message": "Remove protection from \"$1\"",
+    "description": "Accessibility label of the protect button when active. $1 = cookie name."
+  },
+  "popupAriaProtect": {
+    "message": "Protect \"$1\"",
+    "description": "Accessibility label of the protect button. $1 = cookie name."
+  },
+  "popupProtectTitle": {
+    "message": "Protect",
+    "description": "Tooltip of the protect button."
+  },
+  "popupAriaCopyJson": {
+    "message": "Copy cookie as JSON",
+    "description": "Accessibility label of the copy-as-JSON button."
+  },
+  "popupCopyJsonTitle": {
+    "message": "Copy as JSON",
+    "description": "Tooltip of the copy-as-JSON button."
+  },
+  "popupAriaEditCookie": {
+    "message": "Edit cookie",
+    "description": "Accessibility label of the row edit button."
+  },
+  "popupEditTitle": {
+    "message": "Edit",
+    "description": "Tooltip of the row edit button."
+  },
+  "popupAriaDeleteCookie": {
+    "message": "Delete cookie",
+    "description": "Accessibility label of the row delete button."
+  },
+  "popupDeleteTitle": {
+    "message": "Delete",
+    "description": "Tooltip of the row delete button."
+  },
+  "popupAriaCopyValue": {
+    "message": "Copy value of \"$1\"",
+    "description": "Accessibility label of the value button. $1 = cookie name."
+  },
+  "popupChipHttpOnly": {
+    "message": "HttpOnly",
+    "description": "Cookie chip: HttpOnly attribute."
+  },
+  "popupChipSecure": {
+    "message": "Secure",
+    "description": "Cookie chip: Secure attribute."
+  },
+  "popupChipSession": {
+    "message": "Session",
+    "description": "Cookie chip: session cookie."
+  },
+  "popupEmptyNone": {
+    "message": "This page does not have any cookies.",
+    "description": "Empty state when the site has no cookies."
+  },
+  "popupEmptyNoMatch": {
+    "message": "No cookies match your search.",
+    "description": "Empty state when the search filter matches nothing."
+  },
+  "popupErrorOpenSidePanel": {
+    "message": "Could not open the side panel: $1",
+    "description": "Toast when opening the side panel fails. $1 = error message."
+  },
+  "popupErrorLoadCookies": {
+    "message": "Failed to load cookies: $1",
+    "description": "Toast when loading the cookie list fails. $1 = error message."
+  },
+  "popupErrorNameRequired": {
+    "message": "Cookie name is required.",
+    "description": "Toast when saving a cookie without a name."
+  },
+  "popupCookieSaved": {
+    "message": "Cookie saved.",
+    "description": "Toast after saving a cookie."
+  },
+  "popupErrorSave": {
+    "message": "Could not save the cookie: $1",
+    "description": "Toast when saving a cookie fails. $1 = error message."
+  },
+  "popupErrorDeleteCookie": {
+    "message": "Could not delete the cookie: $1",
+    "description": "Toast when deleting one cookie fails. $1 = error message."
+  },
+  "popupErrorDeleteCookies": {
+    "message": "Could not delete the cookies: $1",
+    "description": "Toast when a multi-cookie deletion fails. $1 = error message."
+  },
+  "popupErrorProfileRestore": {
+    "message": "Could not restore the profile: $1",
+    "description": "Toast when restoring a profile fails. $1 = error message."
+  },
+  "popupDeletedCookie": {
+    "message": "Deleted \"$1\".",
+    "description": "Toast after deleting one cookie. $1 = cookie name (possibly truncated)."
+  },
+  "popupPinned": {
+    "message": "Pinned",
+    "description": "Toast after pinning a cookie."
+  },
+  "popupUnpinned": {
+    "message": "Unpinned",
+    "description": "Toast after unpinning a cookie."
+  },
+  "popupProtected": {
+    "message": "Protected",
+    "description": "Toast after protecting a cookie."
+  },
+  "popupProtectionRemoved": {
+    "message": "Protection removed",
+    "description": "Toast after removing the protection flag."
+  },
+  "popupErrorFlag": {
+    "message": "Could not update the flag: $1",
+    "description": "Toast when toggling pin/protect fails. $1 = error message."
+  },
+  "popupRestoredCount": {
+    "message": "Restored $1 cookie(s).",
+    "description": "Toast after undoing a deletion. $1 = number of restored cookies."
+  },
+  "popupExportedCount": {
+    "message": "Exported $1 cookie(s) as $2.",
+    "description": "Toast after copying an export. $1 = count, $2 = format name."
+  },
+  "popupDownloadedCount": {
+    "message": "Downloaded $1 cookie(s) as $2.",
+    "description": "Toast after downloading an export file. $1 = count, $2 = format name."
+  },
+  "popupBulkExported": {
+    "message": "Exported $1 selected cookie(s) as JSON.",
+    "description": "Toast after bulk export. $1 = number of exported cookies."
+  },
+  "popupFileLoaded": {
+    "message": "Loaded $1.",
+    "description": "Toast after reading an import file. $1 = file name."
+  },
+  "popupErrorReadFile": {
+    "message": "Could not read the file: $1",
+    "description": "Toast when reading an import file fails. $1 = file name."
+  },
+  "popupErrorInvalidFormat": {
+    "message": "Input is not in a valid format.",
+    "description": "Toast when the import text matches no known format."
+  },
+  "popupImportedCount": {
+    "message": "Imported $1 cookie(s), $2 failed — format: $3.",
+    "description": "Toast after an import. $1 = imported, $2 = failed, $3 = detected format."
+  },
+  "popupProfilesEmpty": {
+    "message": "No profiles saved yet.",
+    "description": "Empty state of the profile list."
+  },
+  "popupProfileMerge": {
+    "message": "Merge",
+    "description": "Profile restore mode: keep current cookies."
+  },
+  "popupProfileReplace": {
+    "message": "Replace",
+    "description": "Profile restore mode: delete current cookies first."
+  },
+  "popupProfileRestoreMergeTitle": {
+    "message": "Restore \"$1\" (merge with current cookies)",
+    "description": "Tooltip of the profile Merge button. $1 = profile name."
+  },
+  "popupProfileRestoreReplaceTitle": {
+    "message": "Restore \"$1\" (replace this site's cookies)",
+    "description": "Tooltip of the profile Replace button. $1 = profile name."
+  },
+  "popupAriaProfileDuplicate": {
+    "message": "Duplicate profile \"$1\"",
+    "description": "Accessibility label of the profile duplicate button. $1 = profile name."
+  },
+  "popupAriaProfileRename": {
+    "message": "Rename profile \"$1\"",
+    "description": "Accessibility label of the profile rename button/input. $1 = profile name."
+  },
+  "popupAriaProfileDelete": {
+    "message": "Delete profile \"$1\"",
+    "description": "Accessibility label of the profile delete button. $1 = profile name."
+  },
+  "popupProfileRenamed": {
+    "message": "Profile renamed.",
+    "description": "Toast after renaming a profile."
+  },
+  "popupErrorProfileRename": {
+    "message": "Could not rename the profile: $1",
+    "description": "Toast when renaming a profile fails. $1 = error message."
+  },
+  "popupErrorProfileName": {
+    "message": "Profile name is required.",
+    "description": "Toast when saving a profile without a name."
+  },
+  "popupProfileSaved": {
+    "message": "Saved \"$1\" ($2).",
+    "description": "Toast after saving a profile. $1 = name, $2 = cookie count fragment."
+  },
+  "popupErrorProfileSave": {
+    "message": "Could not save the profile: $1",
+    "description": "Toast when saving a profile fails. $1 = error message."
+  },
+  "popupProfileRestored": {
+    "message": "Restored $1 cookie(s) from \"$2\" ($3)",
+    "description": "Toast after restoring a profile (a failure fragment and a period may be appended). $1 = imported, $2 = profile name, $3 = mode."
+  },
+  "popupProfileDuplicated": {
+    "message": "Duplicated \"$1\".",
+    "description": "Toast after duplicating a profile. $1 = profile name."
+  },
+  "popupErrorProfileDuplicate": {
+    "message": "Could not duplicate the profile: $1",
+    "description": "Toast when duplicating a profile fails. $1 = error message."
+  },
+  "optionsTitle": {
+    "message": "Options",
+    "description": "Options page title suffix."
+  },
+  "optionsGeneral": {
+    "message": "General",
+    "description": "Options section heading: general settings."
+  },
+  "optionsOpenTarget": {
+    "message": "Open via",
+    "description": "General option: what opens when the toolbar icon is clicked."
+  },
+  "optionsOpenTargetPanel": {
+    "message": "Side panel",
+    "description": "Open-target choice: the browser side panel."
+  },
+  "optionsOpenTargetPopup": {
+    "message": "Popup",
+    "description": "Open-target choice: the toolbar popup."
+  },
+  "optionsTheme": {
+    "message": "Theme",
+    "description": "Option label: color theme."
+  },
+  "optionsThemeAuto": {
+    "message": "Auto",
+    "description": "Theme choice: follow the system."
+  },
+  "optionsThemeLight": {
+    "message": "Light",
+    "description": "Theme choice: light."
+  },
+  "optionsThemeDark": {
+    "message": "Dark",
+    "description": "Theme choice: dark."
+  },
+  "optionsAdvancedDefault": {
+    "message": "Advanced mode by default",
+    "description": "Checkbox: show advanced fields by default."
+  },
+  "optionsAnimations": {
+    "message": "Animations",
+    "description": "Checkbox: enable UI animations."
+  },
+  "optionsBarPosition": {
+    "message": "Button bar position",
+    "description": "Option label: where the popup button bar sits."
+  },
+  "optionsBarBottom": {
+    "message": "Bottom",
+    "description": "Button bar at the bottom."
+  },
+  "optionsBarTop": {
+    "message": "Top",
+    "description": "Button bar at the top."
+  },
+  "optionsExtraInfo": {
+    "message": "Extra info column",
+    "description": "Option label: the second column of each cookie row."
+  },
+  "optionsExtraValue": {
+    "message": "Value",
+    "description": "Extra info choice: cookie value."
+  },
+  "optionsExtraDomain": {
+    "message": "Domain",
+    "description": "Extra info choice: cookie domain."
+  },
+  "optionsExtraPath": {
+    "message": "Path",
+    "description": "Extra info choice: cookie path."
+  },
+  "optionsExtraExpiry": {
+    "message": "Expiration",
+    "description": "Extra info choice: cookie expiration."
+  },
+  "optionsExtraSameSite": {
+    "message": "SameSite",
+    "description": "Extra info choice: SameSite attribute."
+  },
+  "optionsExport": {
+    "message": "Export",
+    "description": "Options section heading: export settings."
+  },
+  "optionsExportFormat": {
+    "message": "Default export format",
+    "description": "Option label: the format used by the main export button."
+  },
+  "optionsExportAsk": {
+    "message": "Ask every time",
+    "description": "Export format choice: open the menu each time."
+  },
+  "optionsDataTitle": {
+    "message": "Data (danger zone)",
+    "description": "Options section heading: browser-wide data actions."
+  },
+  "optionsDataHint": {
+    "message": "These actions cover every cookie in every cookie store of this browser profile — not only the site shown in the popup.",
+    "description": "Hint under the Data section heading."
+  },
+  "optionsExportAllJson": {
+    "message": "Export ALL cookies (JSON)",
+    "description": "Button that downloads every cookie as JSON."
+  },
+  "optionsExportAllNetscape": {
+    "message": "Export ALL cookies (Netscape)",
+    "description": "Button that downloads every cookie in Netscape format."
+  },
+  "optionsDeletePlaceholder": {
+    "message": "Type DELETE to confirm",
+    "description": "Placeholder of the delete-all confirmation input."
+  },
+  "optionsDeleteAria": {
+    "message": "Type DELETE to enable the delete button",
+    "description": "Accessibility label of the delete-all confirmation input."
+  },
+  "optionsDeleteAllBtn": {
+    "message": "Delete ALL cookies",
+    "description": "Button that deletes every cookie in the browser."
+  },
+  "optionsDeleteWarning": {
+    "message": "Deleting cannot be undone. Logins and sessions in every site will be lost.",
+    "description": "Warning under the delete-all button."
+  },
+  "optionsProfilesTitle": {
+    "message": "Profiles",
+    "description": "Options section heading: saved profiles."
+  },
+  "optionsProfilesHint": {
+    "message": "Saved cookie sets from the popup. Restore profiles from the popup while on the target site.",
+    "description": "Hint under the Profiles section heading."
+  },
+  "optionsAbout": {
+    "message": "About",
+    "description": "Options section heading: about the extension."
+  },
+  "optionsPrivacy": {
+    "message": "CookieLens is 100% offline: no analytics, no remote code, and your cookie data never leaves the browser.",
+    "description": "Privacy statement in the About section."
+  },
+  "optionsShortcutsTitle": {
+    "message": "Keyboard shortcuts",
+    "description": "About subheading: keyboard shortcuts."
+  },
+  "optionsShortcutPanel": {
+    "message": "open the side panel",
+    "description": "Description of Alt+Shift+C (after the key)."
+  },
+  "optionsShortcutExport": {
+    "message": "copy this site's cookies as JSON to the clipboard",
+    "description": "Description of Alt+Shift+E (after the key)."
+  },
+  "optionsShortcutDelete": {
+    "message": "delete all cookies for this site — press twice to confirm",
+    "description": "Description of Alt+Shift+D (after the key)."
+  },
+  "optionsShortcutsHint": {
+    "message": "Shortcuts can be changed in your browser's extension shortcut settings (chrome://extensions/shortcuts).",
+    "description": "Hint under the shortcut list."
+  },
+  "optionsLicense": {
+    "message": "Released under the MIT License.",
+    "description": "License line in the About section."
+  },
+  "optionsLanguageNote": {
+    "message": "The interface language follows your browser's language.",
+    "description": "About note on how the display language is chosen."
+  },
+  "optionsErrorSaveOption": {
+    "message": "Could not save the option: $1",
+    "description": "Toast when persisting an option fails. $1 = error message."
+  },
+  "optionsExportedAll": {
+    "message": "Exported $1 cookie(s) from $2 cookie store(s).",
+    "description": "Toast after exporting all cookies. $1 = count, $2 = number of stores."
+  },
+  "optionsErrorDeleteAll": {
+    "message": "Delete failed: $1",
+    "description": "Toast when the browser-wide delete fails. $1 = error message."
+  },
+  "optionsProfileDownloaded": {
+    "message": "Downloaded \"$1\" ($2).",
+    "description": "Toast after downloading a profile. $1 = profile name, $2 = cookie count fragment."
+  },
+  "optionsErrorDownloadProfile": {
+    "message": "Could not download the profile: $1",
+    "description": "Toast when downloading a profile fails. $1 = error message."
+  },
+  "backupsAutoToggle": {
+    "message": "Automatic daily backup",
+    "description": "Checkbox: take an automatic backup once a day."
+  },
+  "backupsHint": {
+    "message": "Once a day, a snapshot of every cookie in this browser profile is stored locally. The 5 newest days are kept. Restoring a backup merges its cookies back into the browser.",
+    "description": "Hint explaining the automatic backup."
+  },
+  "backupsRunNow": {
+    "message": "Back up now",
+    "description": "Button that takes a backup immediately."
+  },
+  "backupsListTitle": {
+    "message": "Backups (last 5 days)",
+    "description": "Subheading above the backup list."
+  },
+  "backupsEmpty": {
+    "message": "No backups yet.",
+    "description": "Empty state of the backup list."
+  },
+  "backupsSaved": {
+    "message": "Backup saved: $1 ($2).",
+    "description": "Toast after a backup. $1 = date, $2 = cookie count fragment."
+  },
+  "backupsError": {
+    "message": "Backup failed: $1",
+    "description": "Toast when a backup fails. $1 = error message."
+  },
+  "backupsDownloaded": {
+    "message": "Downloaded backup $1.",
+    "description": "Toast after downloading a backup. $1 = date."
+  },
+  "backupsRestored": {
+    "message": "Restored $1 cookie(s) from $2",
+    "description": "Toast after restoring a backup (a failure fragment and a period may be appended). $1 = imported, $2 = date."
+  },
+  "backupsErrorRestore": {
+    "message": "Could not restore the backup: $1",
+    "description": "Toast when restoring a backup fails. $1 = error message."
+  },
+  "backupsDeleted": {
+    "message": "Deleted backup $1.",
+    "description": "Toast after deleting a backup. $1 = date."
+  },
+  "backupsErrorDelete": {
+    "message": "Could not delete the backup: $1",
+    "description": "Toast when deleting a backup fails. $1 = error message."
+  }
+}

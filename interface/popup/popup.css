@@ -1,0 +1,889 @@
+/* Cookie Editor Pro — popup styles
+   Tema: auto mengikuti prefers-color-scheme, dengan override manual via
+   data-theme="light"/"dark" di <html> (dipakai popup, side panel, devtools
+   panel, dan halaman Options). */
+
+:root {
+  --bg: #ffffff;
+  --bg-subtle: #f5f6f8;
+  --text: #1f2328;
+  --text-muted: #656d76;
+  --border: #d8dee4;
+  --accent: #d99e4a;
+  --accent-strong: #b97f2f;
+  --danger: #cf222e;
+  --danger-bg: #fff1f2;
+  --success: #2da44e;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Manual light override — higher specificity so it beats the media query. */
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-subtle: #f5f6f8;
+  --text: #1f2328;
+  --text-muted: #656d76;
+  --border: #d8dee4;
+  --accent: #d99e4a;
+  --accent-strong: #b97f2f;
+  --danger: #cf222e;
+  --danger-bg: #fff1f2;
+  --success: #2da44e;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+:root[data-theme="dark"] {
+  --bg: #1c2128;
+  --bg-subtle: #22272e;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --border: #363b42;
+  --accent: #d99e4a;
+  --accent-strong: #e8b36a;
+  --danger: #f85149;
+  --danger-bg: rgba(248, 81, 73, 0.12);
+  --success: #3fb950;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root,
+  /* Auto mode: attribute empty/absent — skipped when the user forced a theme. */
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    --bg: #1c2128;
+    --bg-subtle: #22272e;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --border: #363b42;
+    --accent: #d99e4a;
+    --accent-strong: #e8b36a;
+    --danger: #f85149;
+    --danger-bg: rgba(248, 81, 73, 0.12);
+    --success: #3fb950;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Author display rules would otherwise defeat the hidden attribute. */
+[hidden] {
+  display: none !important;
+}
+
+body {
+  width: 500px;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Side panel & DevTools panel: fluid width instead of the 500px popup. */
+.ctx-sidepanel body,
+.ctx-devtools body {
+  width: 100%;
+  min-width: 300px;
+  overflow-x: hidden;
+}
+
+/* Narrow containers: tighter buttons so the button bar stays compact. */
+.ctx-sidepanel .btn,
+.ctx-devtools .btn {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+/* Options page turns animations off. */
+.no-anim * {
+  transition: none !important;
+  animation: none !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+/* ---------- header ---------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.brand-icon {
+  flex: none;
+  border-radius: 4px;
+}
+
+.title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.version {
+  padding: 1px 7px;
+  font-size: 11px;
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: 999px;
+}
+
+.icon-btn {
+  padding: 4px 10px;
+  font-size: 16px;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.icon-btn:hover:not(:disabled) {
+  background: var(--border);
+  color: var(--text);
+}
+
+.icon-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ---------- menus ---------- */
+
+.menu-anchor {
+  position: relative;
+  flex: none;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 30;
+  min-width: 175px;
+  max-width: calc(100vw - 16px);
+  max-height: calc(100vh - 48px);
+  padding: 4px;
+  overflow-y: auto;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+.menu-up {
+  top: auto;
+  bottom: calc(100% + 4px);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 10px;
+  font: inherit;
+  color: var(--text);
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background: var(--bg-subtle);
+}
+
+.menu-check {
+  cursor: pointer;
+  user-select: none;
+}
+
+.menu-sep {
+  margin: 4px 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+.menu-group-label {
+  padding: 6px 10px 2px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  user-select: none;
+}
+
+/* ---------- main layout (bar-top reordering) ---------- */
+
+main:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+}
+
+body.bar-top main .button-bar {
+  order: -1;
+  border-top: none;
+  border-bottom: 1px solid var(--border);
+}
+
+/* When the bar sits on top, its dropdown menus open downwards. */
+body.bar-top .menu-up {
+  top: calc(100% + 4px);
+  bottom: auto;
+}
+
+/* ---------- screens (permission / restricted) ---------- */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 36px 24px;
+  text-align: center;
+}
+
+.screen-title {
+  margin: 4px 0 0;
+  font-size: 15px;
+}
+
+.screen p {
+  margin: 0;
+  max-width: 380px;
+  color: var(--text-muted);
+}
+
+.screen-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* ---------- search + sort ---------- */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.search-bar input {
+  flex: 1;
+  min-width: 0;
+  padding: 7px 10px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.search-bar input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+  border-color: transparent;
+}
+
+.sort-controls {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 2px;
+}
+
+.sort-controls select {
+  padding: 6px 4px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sort-controls .icon-btn {
+  padding: 5px 8px;
+  font-size: 14px;
+}
+
+/* ---------- list ---------- */
+
+.cookie-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 100px;
+  max-height: 400px;
+  padding: 8px;
+  overflow-y: auto;
+}
+
+.empty-state {
+  margin: auto;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.cookie-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 7px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.cookie-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.cookie-name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* Quick-copy name/value cells are buttons styled like the old text. */
+button.cookie-name {
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+  color: inherit;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.cookie-name:hover {
+  color: var(--accent-strong);
+}
+
+/* Extra-info cell (value / domain / path / expiry / sameSite). */
+.cookie-extra {
+  flex: 1;
+  min-width: 0;
+  font-family: ui-monospace, Consolas, "Courier New", monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+}
+
+button.cookie-value {
+  padding: 0;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.cookie-value:hover {
+  color: var(--text);
+}
+
+.cookie-chips {
+  display: inline-flex;
+  flex: none;
+  gap: 4px;
+}
+
+.chip {
+  padding: 0 6px;
+  font-size: 10px;
+  line-height: 16px;
+  color: var(--text-muted);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.cookie-actions {
+  display: inline-flex;
+  flex: none;
+  gap: 2px;
+  margin-left: auto;
+}
+
+.cookie-actions .icon-btn {
+  padding: 2px 6px;
+  font-size: 13px;
+}
+
+.cookie-actions .row-delete:hover:not(:disabled) {
+  color: var(--danger);
+}
+
+/* ---------- cookie flags: pin & protect ---------- */
+
+.row-select {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: var(--accent-strong);
+  cursor: pointer;
+}
+
+.cookie-actions .icon-btn.active {
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+/* Pinned rows float to the top via sorting; this marks them subtly. */
+.cookie-row.pinned {
+  background: color-mix(in srgb, var(--accent) 7%, var(--bg));
+  border-left: 3px solid var(--accent);
+}
+
+/* ---------- bulk selection bar (replaces the search bar while active) ---------- */
+
+.bulk-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: color-mix(in srgb, var(--accent) 10%, var(--bg-subtle));
+  border-bottom: 1px solid var(--border);
+}
+
+.bulk-count {
+  margin-right: auto;
+  font-weight: 600;
+}
+
+/* ---------- panels (form / import) ---------- */
+
+.panel {
+  padding: 12px 14px;
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-title {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.panel-hint {
+  margin: 0 0 10px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.panel textarea {
+  width: 100%;
+  padding: 8px 10px;
+  font: 12px/1.5 ui-monospace, Consolas, "Courier New", monospace;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  resize: vertical;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.form-row label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.form-row input[type="text"],
+.form-row input[type="datetime-local"],
+.form-row select {
+  width: 100%;
+  padding: 6px 9px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.form-row input:disabled {
+  opacity: 0.55;
+}
+
+.form-row-inline {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.form-row-inline > .form-row {
+  flex: 1;
+  min-width: 0;
+}
+
+.expiration-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.expiration-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.req {
+  color: var(--danger);
+}
+
+.form-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 2px 0 12px;
+  font-size: 12px;
+}
+
+.form-checks label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.import-source-row {
+  display: flex;
+  margin-top: 8px;
+}
+
+.import-source-row input[type="file"] {
+  font: inherit;
+  color: var(--text);
+}
+
+.import-source-row .btn-mini {
+  margin-right: auto;
+}
+
+/* ---------- cookie profiles panel (popup) ---------- */
+
+.profile-save {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.profile-save input {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 9px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.profile-save input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+  border-color: transparent;
+}
+
+.profile-bind {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 10px;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.profile-bind span {
+  overflow-wrap: anywhere;
+}
+
+.profile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 260px;
+  margin-top: 8px;
+  overflow-y: auto;
+}
+
+.profile-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.profile-top {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.profile-name-text {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.profile-meta {
+  flex: none;
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.profile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.profile-actions .icon-btn {
+  padding: 2px 6px;
+  font-size: 13px;
+}
+
+.profile-actions .icon-btn:last-child:hover {
+  color: var(--danger);
+}
+
+.profile-rename-input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 8px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+}
+
+/* ---------- split export button ---------- */
+
+.split-btn {
+  display: inline-flex;
+}
+
+.split-btn .btn:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.export-caret {
+  padding: 6px 8px;
+  font-size: 10px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: none;
+  line-height: 1.7;
+}
+
+/* ---------- button bar ---------- */
+
+.button-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.btn {
+  padding: 6px 12px;
+  font: inherit;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.btn.primary {
+  color: #fff;
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+.btn.primary:hover:not(:disabled) {
+  border-color: var(--accent-strong);
+  filter: brightness(1.06);
+}
+
+.btn.danger {
+  color: var(--danger);
+  background: var(--danger-bg);
+  border-color: color-mix(in srgb, var(--danger) 40%, transparent);
+}
+
+.btn.danger:hover:not(:disabled) {
+  border-color: var(--danger);
+}
+
+.btn.danger.armed {
+  color: #fff;
+  background: var(--danger);
+  border-color: var(--danger);
+}
+
+.btn.copied {
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  border-color: var(--accent);
+}
+
+.btn-mini {
+  padding: 3px 8px;
+  font-size: 11px;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ---------- toasts ---------- */
+
+.toast-container {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 460px;
+  padding: 8px 8px 8px 12px;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  pointer-events: auto;
+}
+
+.toast-success {
+  border-left-color: var(--success);
+}
+
+.toast-error {
+  border-left-color: var(--danger);
+}
+
+.toast-message {
+  overflow-wrap: anywhere;
+}
+
+.toast-close {
+  flex: none;
+  padding: 0 4px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toast-close:hover {
+  color: var(--text);
+  background: var(--bg-subtle);
+}
+
+.toast-action {
+  flex: none;
+  padding: 2px 10px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-strong);
+  background: none;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.toast-action:hover {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+}

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title data-i18n="extName">CookieLens</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <img src="../../icons/32.png" alt="" class="brand-icon" width="20" height="20" />
+      <h1 class="title" data-i18n="extName">CookieLens</h1>
+      <span class="version" id="version">&hellip;</span>
+    </div>
+    <div class="menu-anchor">
+      <button id="options-btn" class="icon-btn" type="button" data-i18n-aria-label="popupMenu" aria-label="Menu" aria-haspopup="true" aria-expanded="false">&#8943;</button>
+      <div id="options-menu" class="menu" hidden>
+        <label class="menu-item menu-check">
+          <input type="checkbox" id="advanced-toggle" />
+          <span data-i18n="popupShowAdvanced">Show advanced</span>
+        </label>
+        <hr class="menu-sep" />
+        <button type="button" class="menu-item" id="open-sidepanel-btn" data-i18n="popupOpenSidePanel" hidden>Open side panel</button>
+        <button type="button" class="menu-item" id="open-options-btn" data-i18n="popupOpenOptions">Options</button>
+      </div>
+    </div>
+  </header>
+
+  <section id="screen-permission" class="screen" hidden>
+    <img src="../../icons/48.png" alt="" width="48" height="48" />
+    <h2 class="screen-title" data-i18n="popupPermissionTitle">Permission needed</h2>
+    <p id="permission-text" data-i18n="popupPermissionTextGeneric">Cookie Editor needs permission to read and edit cookies on this site.</p>
+    <div class="screen-actions">
+      <button id="allow-site-btn" type="button" class="btn primary" data-i18n="popupAllowSite">Allow this site</button>
+      <button id="allow-all-btn" type="button" class="btn" data-i18n="popupAllowAll">Allow all sites</button>
+    </div>
+  </section>
+
+  <section id="screen-restricted" class="screen" hidden>
+    <img src="../../icons/48.png" alt="" width="48" height="48" />
+    <h2 class="screen-title" data-i18n="popupRestrictedTitle">Restricted page</h2>
+    <p data-i18n="popupRestrictedText">Cookie Editor cannot run on this page.</p>
+  </section>
+
+  <main id="screen-main" hidden>
+    <div id="search-bar" class="search-bar">
+      <input id="search" type="search" data-i18n-placeholder="popupSearchPlaceholder" data-i18n-aria-label="popupSearchAria" placeholder="Search cookies&#8230;" aria-label="Search cookies" />
+      <div class="sort-controls">
+        <select id="sort-column" data-i18n-aria-label="popupSortBy" aria-label="Sort cookies by">
+          <option value="name" data-i18n="popupSortName">Name</option>
+          <option value="domain" data-i18n="popupSortDomain">Domain</option>
+          <option value="expiration" data-i18n="popupSortExpiration">Expiration</option>
+        </select>
+        <button id="sort-direction" type="button" class="icon-btn" data-i18n-aria-label="popupSortDirection" data-i18n-title="popupSortDirection" aria-label="Toggle sort direction" title="Toggle sort direction">&#8593;</button>
+      </div>
+    </div>
+
+    <div id="bulk-bar" class="bulk-bar" hidden>
+      <span id="bulk-count" class="bulk-count" data-i18n="popupBulkZeroSelected">0 selected</span>
+      <button type="button" id="bulk-toggle-all" class="btn btn-mini" data-i18n="popupBulkToggleAll">Select all/none</button>
+      <button type="button" id="bulk-export" class="btn btn-mini" data-i18n="popupBulkExport">Export JSON</button>
+      <button type="button" id="bulk-delete" class="btn btn-mini danger" data-i18n="commonDelete">Delete</button>
+      <button type="button" id="bulk-cancel" class="btn btn-mini" data-i18n="commonCancel">Cancel</button>
+    </div>
+
+    <div id="cookie-list" class="cookie-list" role="list" aria-live="polite"></div>
+
+    <section id="form-panel" class="panel" hidden data-i18n-aria-label="popupFormAria" aria-label="Cookie form">
+      <h2 id="form-title" class="panel-title" data-i18n="popupAddCookie">Add cookie</h2>
+      <form id="cookie-form" novalidate>
+        <div class="form-row">
+          <label for="form-name"><span data-i18n="popupFieldName">Name</span> <span class="req" aria-hidden="true">*</span></label>
+          <input id="form-name" name="name" type="text" autocomplete="off" />
+        </div>
+        <div class="form-row">
+          <label for="form-value" data-i18n="popupFieldValue">Value</label>
+          <input id="form-value" name="value" type="text" autocomplete="off" />
+        </div>
+
+        <div id="form-advanced" hidden>
+          <div class="form-row">
+            <label for="form-domain" data-i18n="popupFieldDomain">Domain</label>
+            <input id="form-domain" name="domain" type="text" autocomplete="off" />
+          </div>
+          <div class="form-row-inline">
+            <div class="form-row">
+              <label for="form-path" data-i18n="popupFieldPath">Path</label>
+              <input id="form-path" name="path" type="text" value="/" autocomplete="off" />
+            </div>
+            <div class="form-row">
+              <label for="form-samesite" data-i18n="popupFieldSameSite">SameSite</label>
+              <select id="form-samesite" name="sameSite">
+                <option value="unspecified">unspecified</option>
+                <option value="no_restriction">no_restriction</option>
+                <option value="lax">lax</option>
+                <option value="strict">strict</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="form-expiration" data-i18n="popupFieldExpiration">Expiration</label>
+            <div class="expiration-row">
+              <input id="form-expiration" name="expiration" type="datetime-local" />
+              <button type="button" class="btn btn-mini" data-expiry="3600" data-i18n="popupExpiryHour">+1 hour</button>
+              <button type="button" class="btn btn-mini" data-expiry="86400" data-i18n="popupExpiryDay">+1 day</button>
+              <button type="button" class="btn btn-mini" data-expiry="604800" data-i18n="popupExpiryWeek">+1 week</button>
+            </div>
+          </div>
+          <div class="form-checks">
+            <label><input type="checkbox" id="form-hostonly" /> <span data-i18n="popupFieldHostOnly">Host-only</span></label>
+            <label><input type="checkbox" id="form-session" checked /> <span data-i18n="popupFieldSession">Session</span></label>
+            <label><input type="checkbox" id="form-secure" /> <span data-i18n="popupFieldSecure">Secure</span></label>
+            <label><input type="checkbox" id="form-httponly" /> <span data-i18n="popupFieldHttpOnly">Http-Only</span></label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary" data-i18n="commonSave">Save</button>
+          <button type="button" id="form-cancel" class="btn" data-i18n="commonCancel">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="import-panel" class="panel" hidden data-i18n-aria-label="popupImportAria" aria-label="Import cookies">
+      <h2 class="panel-title" data-i18n="popupImportTitle">Import cookies</h2>
+      <p class="panel-hint" data-i18n="popupImportHint">Paste JSON, Netscape or Header String &mdash; the format is detected automatically.</p>
+      <textarea id="import-text" rows="6" spellcheck="false" data-i18n-aria-label="popupImportTextareaAria" aria-label="Cookie data to import"></textarea>
+      <div class="import-source-row">
+        <button type="button" id="import-file-btn" class="btn btn-mini" data-i18n="popupChooseFile">Choose file&hellip;</button>
+        <input type="file" id="import-file" accept=".json,.txt" hidden />
+      </div>
+      <div class="form-actions">
+        <button type="button" id="import-submit" class="btn primary" data-i18n="popupImportBtn">Import</button>
+        <button type="button" id="import-cancel" class="btn" data-i18n="commonCancel">Cancel</button>
+      </div>
+    </section>
+
+    <section id="profiles-panel" class="panel" hidden data-i18n-aria-label="popupProfilesAria" aria-label="Cookie profiles">
+      <h2 class="panel-title" data-i18n="popupProfilesTitle">Cookie profiles</h2>
+      <p class="panel-hint" data-i18n="popupProfilesHint">Save this site's cookies under a name and restore them later. Merge keeps current cookies; replace deletes them first (protected cookies are kept).</p>
+      <div class="profile-save">
+        <input id="profile-name" type="text" data-i18n-placeholder="popupProfileNamePlaceholder" data-i18n-aria-label="popupProfileNameAria" placeholder="Profile name" autocomplete="off" aria-label="Profile name" />
+        <button type="button" id="profile-save" class="btn primary" data-i18n="commonSave">Save</button>
+      </div>
+      <label class="profile-bind">
+        <input type="checkbox" id="profile-bind" checked />
+        <span><span data-i18n="popupProfileBindTo">Bind to</span> <span id="profile-bind-host"></span></span>
+      </label>
+      <div id="profile-list" class="profile-list"></div>
+      <div class="form-actions">
+        <button type="button" id="profiles-cancel" class="btn" data-i18n="commonClose">Close</button>
+      </div>
+    </section>
+
+    <footer class="button-bar">
+      <button id="add-btn" type="button" class="btn" data-i18n="popupAddBtn">+ Add</button>
+      <button id="delete-all-btn" type="button" class="btn danger" data-i18n="popupDeleteAll">Delete All</button>
+      <div class="spacer"></div>
+      <button id="import-btn" type="button" class="btn" data-i18n="popupImportBtn">Import</button>
+      <button id="profiles-btn" type="button" class="btn" data-i18n="popupProfilesBtn">Profiles</button>
+      <div class="menu-anchor">
+        <span class="split-btn">
+          <button id="export-btn" type="button" class="btn" data-i18n="popupExport" aria-haspopup="true" aria-expanded="false">Export</button>
+          <button id="export-menu-btn" type="button" class="btn export-caret" data-i18n-aria-label="popupMoreExport" aria-label="More export options" aria-haspopup="true" aria-expanded="false">&#9662;</button>
+        </span>
+        <div id="export-menu" class="menu menu-up" hidden>
+          <div class="menu-group-label" data-i18n="popupExportGroupCopy">Copy</div>
+          <button type="button" class="menu-item" data-export="json" data-i18n="exportFormatJson">JSON</button>
+          <button type="button" class="menu-item" data-export="netscape" data-i18n="exportFormatNetscape">Netscape</button>
+          <button type="button" class="menu-item" data-export="headerstring" data-i18n="exportFormatHeaderString">Header String</button>
+          <button type="button" class="menu-item" data-export="curl-bash" data-i18n="exportFormatCurlBash">cURL (bash)</button>
+          <button type="button" class="menu-item" data-export="curl-cmd" data-i18n="exportFormatCurlCmd">cURL (CMD)</button>
+          <div class="menu-group-label" data-i18n="popupExportGroupDownload">Download file</div>
+          <button type="button" class="menu-item" data-export="json-file" data-i18n="exportFormatJson">JSON</button>
+          <button type="button" class="menu-item" data-export="netscape-file" data-i18n="exportFormatNetscape">Netscape</button>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Template fallback texts stay in English on purpose: applyI18n() cannot
+       reach inside <template> content, and buildRow() re-sets every
+       aria-label/title from t() before a row becomes visible. -->
+  <template id="tpl-cookie-row">
+    <div class="cookie-row" role="listitem">
+      <div class="cookie-line">
+        <input type="checkbox" class="row-select" aria-label="Select cookie" />
+        <button type="button" class="cookie-name" title="Copy name"></button>
+        <span class="cookie-chips"></span>
+      </div>
+      <div class="cookie-line">
+        <span class="cookie-extra cookie-value"></span>
+        <span class="cookie-actions">
+          <button type="button" class="icon-btn row-pin" aria-label="Pin cookie" title="Pin">&#128204;</button>
+          <button type="button" class="icon-btn row-protect" aria-label="Protect cookie" title="Protect">&#128274;</button>
+          <button type="button" class="icon-btn row-copy" aria-label="Copy cookie as JSON" title="Copy as JSON">&#10697;</button>
+          <button type="button" class="icon-btn row-edit" aria-label="Edit cookie" title="Edit">&#9998;</button>
+          <button type="button" class="icon-btn row-delete" aria-label="Delete cookie" title="Delete">&#10005;</button>
+        </span>
+      </div>
+    </div>
+  </template>
+
+  <script type="module" src="cookie-list.js"></script>
+</body>
+</html>
