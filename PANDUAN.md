@@ -1,6 +1,6 @@
 # Panduan Pengguna CookieLens
 
-Bahasa: Indonesia · Versi: 0.4.1 · Antarmuka ekstensi mengikuti bahasa browser (EN/ID).
+Bahasa: Indonesia · Versi: 0.4.2 · Antarmuka ekstensi mengikuti bahasa browser (EN/ID).
 
 ## 1. Instalasi
 
@@ -32,7 +32,7 @@ Untuk Firefox (mode pengembangan): `about:debugging` → **This Firefox** →
 | Sorting | Dropdown Name/Domain/Expiration + tombol ↑/↓ untuk arah. Preferensi tersimpan. |
 | Ikon per baris | 📌 pin (naik ke urutan atas) · 🔒 protect (kebal delete-all) · ⧉ salin JSON · ✎ edit · ✕ hapus. |
 | Hapus | ✕ menghapus satu cookie, muncul toast **Undo** 5 detik. |
-| Chip | HttpOnly / Secure / Session = flag cookie tersebut. |
+| Chip | HttpOnly / Secure / Session / Partitioned = flag cookie tersebut (Partitioned = cookie CHIPS dari iframe pihak ketiga). |
 | Menu ⋯ | "Show advanced", "Open side panel", "Options". |
 
 ### Tambah / edit cookie
@@ -59,6 +59,8 @@ Untuk Firefox (mode pengembangan): `about:debugging` → **This Firefox** →
 Tombol **Export** memakai format bawaan dari Options; tombol ▾ membuka menu:
 - **Copy**: JSON, Netscape, Header String, cURL (bash), cURL (CMD) → ke clipboard.
 - **Download file**: JSON (.json) atau Netscape (.txt).
+- **Download all cookies (browser)**: JSON atau Netscape — seluruh cookie dari semua situs
+  (semua cookie store) dalam satu file `cookies-all-<tanggal>` (sejak v0.4.2).
 
 ### Import
 

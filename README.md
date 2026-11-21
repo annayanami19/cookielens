@@ -1,6 +1,6 @@
 # CookieLens 🍪
 
-**v0.4.1**
+**v0.4.2**
 
 Editor & pengelola cookie untuk Chrome / Edge / Brave — lihat, buat, ubah, hapus,
 ekspor, dan impor cookie dalam satu panel yang rapi. **100% offline: tanpa iklan,
@@ -14,7 +14,10 @@ tanpa telemetry, tanpa remote code.**
 - **Pin & Protect** — sematkan cookie penting; cookie yang diprotect kebal semua aksi hapus
 - **Bulk delete + Undo** — hapus massal dengan kesempatan membatalkan 5 detik
 - **Import / Export** — JSON, Netscape, Header String, cURL (bash & CMD); format terdeteksi
-  otomatis; bisa ke clipboard atau file
+  otomatis; bisa ke clipboard atau file — plus **export semua cookie seluruh browser** langsung
+  dari menu Export
+- **Dukungan CHIPS (cookie partitioned)** — cookie terpartisi ikut terbaca (daftar, badge,
+  export JSON), ditandai chip "Partitioned", dan ikut terhapus oleh Delete All
 - **Cookie Profiles** — simpan set cookie situs sebagai profil, restore merge/replace kapan pun
 - **Backup otomatis harian** — snapshot seluruh cookie browser, disimpan 5 hari terakhir,
   bisa di-restore dari pengaturan
