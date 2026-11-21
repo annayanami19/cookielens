@@ -266,6 +266,11 @@ function wireEvents() {
   });
   for (const item of document.querySelectorAll('#export-menu .menu-item')) {
     item.addEventListener('click', () => {
+      const allKey = item.dataset.exportAll ?? '';
+      if (allKey) {
+        exportAllAsFile(allKey);
+        return;
+      }
       const key = item.dataset.export ?? '';
       if (key.endsWith('-file')) {
         exportAsFile(key.slice(0, -'-file'.length));
@@ -623,6 +628,9 @@ function buildRow(cookie) {
   }
   if (cookie.session) {
     chips.append(buildChip(t('popupChipSession')));
+  }
+  if (cookie.partitionKey?.topLevelSite) {
+    chips.append(buildChip(t('popupChipPartitioned')));
   }
 
   const pinButton = row.querySelector('.row-pin');
@@ -1157,6 +1165,33 @@ async function exportAsFile(format) {
     downloadText(`cookies-${hostname}-${localDateStamp()}.${extension}`, serializer.serialize(state.cookies));
     hideMenu($('export-menu'));
     showToast(t('popupDownloadedCount', [state.cookies.length, t(serializer.labelKey)]), 'success');
+  } catch (error) {
+    showToast(t('commonExportFailed', [error.message]), 'error');
+  } finally {
+    state.exportBusy = false;
+  }
+}
+
+/**
+ * Download every cookie of the browser (all cookie stores) as a file —
+ * the "Download all cookies" group in the export menu. Only JSON and
+ * Netscape carry enough per-cookie domain info to be meaningful browser-wide.
+ * @param {string} format "json" or "netscape"
+ */
+async function exportAllAsFile(format) {
+  const serializer = EXPORT_SERIALIZERS[format];
+  if (!serializer || state.exportBusy) {
+    return;
+  }
+
+  state.exportBusy = true;
+  try {
+    const response = await sendMessage({ type: 'getAllCookiesEverywhere' });
+    const cookies = response?.cookies ?? [];
+    const extension = format === 'netscape' ? 'txt' : 'json';
+    downloadText(`cookies-all-${localDateStamp()}.${extension}`, serializer.serialize(cookies));
+    hideMenu($('export-menu'));
+    showToast(t('popupExportedAll', [cookies.length, response?.storeCount ?? 1]), 'success');
   } catch (error) {
     showToast(t('commonExportFailed', [error.message]), 'error');
   } finally {

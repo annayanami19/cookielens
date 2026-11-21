@@ -359,6 +359,10 @@
     "message": "Unduh berkas",
     "description": "Export menu group label for file download actions."
   },
+  "popupExportGroupAll": {
+    "message": "Unduh semua cookie (seluruh browser)",
+    "description": "Export menu group label for browser-wide download actions."
+  },
   "exportFormatJson": {
     "message": "JSON",
     "description": "Format name: JSON."
@@ -451,6 +455,10 @@
     "message": "Sesi",
     "description": "Cookie chip: session cookie."
   },
+  "popupChipPartitioned": {
+    "message": "Terpartisi",
+    "description": "Cookie chip: CHIPS partitioned cookie."
+  },
   "popupEmptyNone": {
     "message": "Halaman ini tidak memiliki cookie.",
     "description": "Empty state when the site has no cookies."
@@ -526,6 +534,10 @@
   "popupDownloadedCount": {
     "message": "$1 cookie diunduh sebagai $2.",
     "description": "Toast after downloading an export file. $1 = count, $2 = format name."
+  },
+  "popupExportedAll": {
+    "message": "$1 cookie diekspor dari $2 cookie store.",
+    "description": "Toast after a browser-wide download. $1 = count, $2 = store count."
   },
   "popupBulkExported": {
     "message": "$1 cookie terpilih diekspor sebagai JSON.",

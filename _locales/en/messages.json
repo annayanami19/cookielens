@@ -359,6 +359,10 @@
     "message": "Download file",
     "description": "Export menu group label for file download actions."
   },
+  "popupExportGroupAll": {
+    "message": "Download all cookies (browser)",
+    "description": "Export menu group label for browser-wide download actions."
+  },
   "exportFormatJson": {
     "message": "JSON",
     "description": "Format name: JSON."
@@ -451,6 +455,10 @@
     "message": "Session",
     "description": "Cookie chip: session cookie."
   },
+  "popupChipPartitioned": {
+    "message": "Partitioned",
+    "description": "Cookie chip: CHIPS partitioned cookie."
+  },
   "popupEmptyNone": {
     "message": "This page does not have any cookies.",
     "description": "Empty state when the site has no cookies."
@@ -526,6 +534,10 @@
   "popupDownloadedCount": {
     "message": "Downloaded $1 cookie(s) as $2.",
     "description": "Toast after downloading an export file. $1 = count, $2 = format name."
+  },
+  "popupExportedAll": {
+    "message": "Exported $1 cookie(s) from $2 cookie store(s).",
+    "description": "Toast after a browser-wide download. $1 = count, $2 = store count."
   },
   "popupBulkExported": {
     "message": "Exported $1 selected cookie(s) as JSON.",

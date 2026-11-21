@@ -60,14 +60,14 @@ async function handleMessage(message) {
       return { tab };
     }
     case 'getAllCookies': {
-      const cookies = await api.cookies.getAll({ url: message.url });
+      const cookies = await getAllForUrl(message.url);
       return { cookies };
     }
     case 'getAllCookiesEverywhere': {
       const stores = await api.cookies.getAllCookieStores();
       const cookies = [];
       for (const store of stores) {
-        cookies.push(...(await api.cookies.getAll({ storeId: store.id })));
+        cookies.push(...(await getAllForStore(store.id)));
       }
       return { cookies, storeCount: stores.length };
     }
@@ -78,14 +78,16 @@ async function handleMessage(message) {
       let failed = 0;
       let skipped = 0;
       for (const store of stores) {
-        const cookies = await api.cookies.getAll({ storeId: store.id });
+        const cookies = await getAllForStore(store.id);
         for (const cookie of cookies) {
           if (isFlagged(protectedMap, cookie)) {
             skipped += 1;
             continue;
           }
           try {
-            await api.cookies.remove({ url: cookieUrlOf(cookie), name: cookie.name, storeId: store.id });
+            await api.cookies.remove(
+              removeDetailsFor(cookie, { url: cookieUrlOf(cookie), name: cookie.name, storeId: store.id }),
+            );
             removed += 1;
           } catch {
             failed += 1;
@@ -104,7 +106,7 @@ async function handleMessage(message) {
       return removeAllForUrl(message.url);
     case 'removeCookiesByName': {
       const names = new Set(message.names ?? []);
-      const cookies = await api.cookies.getAll({ url: message.url });
+      const cookies = await getAllForUrl(message.url);
       const protectedMap = await protectedMapSafe();
       let removed = 0;
       let skipped = 0;
@@ -117,7 +119,7 @@ async function handleMessage(message) {
           continue;
         }
         try {
-          await api.cookies.remove({ url: message.url, name: cookie.name });
+          await api.cookies.remove(removeDetailsFor(cookie, { url: message.url, name: cookie.name }));
           removed += 1;
         } catch {
           // Skip unreachable cookies and keep going.
@@ -177,13 +179,64 @@ async function protectedMapSafe() {
   }
 }
 
+/* ------------------------------------------------------------------ *
+ * Partitioned cookies (CHIPS) — read/remove helpers.
+ * ------------------------------------------------------------------ */
+
+/**
+ * Get every cookie matching one URL, including CHIPS partitioned cookies.
+ * A filter without a partitionKey only returns unpartitioned cookies;
+ * an empty partitionKey selects every partition (Chrome 119+ / recent
+ * Firefox). Browsers without the partitionKey filter reject it — fall back
+ * to the plain filter, which matches the pre-CHIPS behaviour.
+ * @param {string} url
+ * @returns {Promise<chrome.cookies.Cookie[]>}
+ */
+async function getAllForUrl(url) {
+  try {
+    return await api.cookies.getAll({ url, partitionKey: {} });
+  } catch {
+    return api.cookies.getAll({ url });
+  }
+}
+
+/**
+ * getAllForUrl() scoped to one cookie store (browser-wide queries).
+ * @param {string} storeId
+ * @returns {Promise<chrome.cookies.Cookie[]>}
+ */
+async function getAllForStore(storeId) {
+  try {
+    return await api.cookies.getAll({ storeId, partitionKey: {} });
+  } catch {
+    return api.cookies.getAll({ storeId });
+  }
+}
+
+/**
+ * Build a cookies.remove() details object that can also target partitioned
+ * cookies: a cookie read with a partitionKey is only removed when the same
+ * partitionKey is passed back. Unpartitioned cookies have no partitionKey,
+ * so their details stay untouched.
+ * @param {chrome.cookies.Cookie} cookie
+ * @param {object} base fixed details (url, name, optional storeId)
+ * @returns {object} details ready for cookies.remove()
+ */
+function removeDetailsFor(cookie, base) {
+  const details = { ...base };
+  if (cookie?.partitionKey) {
+    details.partitionKey = cookie.partitionKey;
+  }
+  return details;
+}
+
 /**
  * Delete every cookie of one URL, skipping protected cookies.
  * @param {string} url
  * @returns {Promise<{removed: number, skipped: number}>}
  */
 async function removeAllForUrl(url) {
-  const cookies = await api.cookies.getAll({ url });
+  const cookies = await getAllForUrl(url);
   const protectedMap = await protectedMapSafe();
   let removed = 0;
   let skipped = 0;
@@ -193,7 +246,7 @@ async function removeAllForUrl(url) {
       continue;
     }
     try {
-      await api.cookies.remove({ url, name: cookie.name });
+      await api.cookies.remove(removeDetailsFor(cookie, { url, name: cookie.name }));
       removed += 1;
     } catch {
       // Skip unreachable cookies and keep going.
@@ -312,7 +365,7 @@ async function updateBadge(tabId, url) {
   let text = '';
   if (url && isWebUrl(url)) {
     try {
-      const cookies = await api.cookies.getAll({ url });
+      const cookies = await getAllForUrl(url);
       text = String(cookies.length);
     } catch {
       // No host permission for this URL (yet) — keep the badge empty.
@@ -433,7 +486,7 @@ async function exportSiteJsonToClipboard(tab) {
     return;
   }
   try {
-    const cookies = await api.cookies.getAll({ url: tab.url });
+    const cookies = await getAllForUrl(tab.url);
     await writeClipboard(jsonFormat.serialize(cookies));
     flashBadge(tab.id, '✓', FLASH_FEEDBACK_MS);
   } catch (error) {

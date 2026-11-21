@@ -4,7 +4,7 @@
   "name": "__MSG_extName__",
   "short_name": "CookieLens",
   "description": "__MSG_extDesc__",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "author": "CookieLens Contributors",
   "minimum_chrome_version": "102",
   "icons": {
